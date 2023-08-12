@@ -1,6 +1,7 @@
 // Codes By Mahdi Tasha
 // Importing Part
 import {Metadata} from "next";
+import '@/app/index.css';
 
 // Creating And Exporting Meta Data Of Pages
 export const metadata: Metadata = {
