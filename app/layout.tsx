@@ -1,6 +1,7 @@
 // Codes By Mahdi Tasha
 // Importing Part
 import {Metadata} from "next";
+import HeaderComponent from "@/components/headerComponent";
 import '@/app/index.css';
 
 // Creating And Exporting Meta Data Of Pages
@@ -19,11 +20,12 @@ interface propsType {
 }
 
 // Creating Root Layout Of Pages And Exporting It A Default
-export default function RootLayout({children}: propsType) {
+export default function RootLayout({children}: propsType):JSX.Element {
     // Returning JSX
     return (
         <html lang="en">
             <body>
+                <HeaderComponent></HeaderComponent>
                 {children}
             </body>
         </html>
