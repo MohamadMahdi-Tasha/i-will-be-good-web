@@ -2,6 +2,7 @@
 // Importing Part
 import {Metadata} from "next";
 import HeaderComponent from "@/components/headerComponent";
+import FooterComponent from "@/components/footerComponent";
 import '@/app/index.css';
 
 // Creating And Exporting Meta Data Of Pages
@@ -25,8 +26,9 @@ export default function RootLayout({children}: propsType):JSX.Element {
     return (
         <html lang="en">
             <body className={'font-primary'}>
-                <HeaderComponent></HeaderComponent>
+                <HeaderComponent />
                 {children}
+                <FooterComponent />
             </body>
         </html>
     );

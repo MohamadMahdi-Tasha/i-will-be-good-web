@@ -1,8 +1,4 @@
 // Codes By Mahdi Tasha
-// Importing Part
-import CheckboxComponent from "@/chunks/checkboxComponent";
-import WeekDaysComponent from "@/components/weekDaysComponent";
-
 // Creating Home Third Section Component And Exporting It As Default
 export default function HomeThirdSectionComponent():JSX.Element {
     // Return JSX
