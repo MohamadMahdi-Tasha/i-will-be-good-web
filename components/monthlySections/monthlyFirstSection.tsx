@@ -1,6 +1,6 @@
 // Codes By Mahdi Tasha
 // Importing Part
-
+import CalenderComponent from "@/components/calenderComponent";
 
 // Defining Type Of Props
 interface propsType {
@@ -13,10 +13,8 @@ export default function MonthlyFirstSection({title}:propsType):JSX.Element {
     return (
         <section>
             <header><h1 className={'big-title truncate'}>{title}</h1></header>
-            <main className={'lg:flex gap-[10px]'}>
-                <div className={'bg-black lg:w-[50%] w-full'}>
-
-                </div>
+            <main className={'flex lg:flex-row flex-col gap-[20px]'}>
+                <CalenderComponent />
                 <p className={'small-paragraph lg:w-[50%] w-full'}>
                     Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                     <br/>
