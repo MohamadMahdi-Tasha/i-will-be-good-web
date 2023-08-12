@@ -43,7 +43,7 @@ export default function HomeFirstSectionComponent():JSX.Element {
             </main>
             <footer>
                 <a className={'block'} href="#">
-                    <button className={'border w-full border-black rounded-[10px] p-[10px] text-center '}>Click here to see monthly</button>
+                    <button className={'border w-full truncate border-black rounded-[10px] p-[10px] text-center '}>Click here to see monthly</button>
                 </a>
             </footer>
         </section>
