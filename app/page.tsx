@@ -10,7 +10,9 @@ export default function HomePage():JSX.Element {
     return (
         <HolderComponent className={'py-[50px]'}>
             <HomeFirstSectionComponent />
+            <hr className={'divider'}/>
             <HomeSecondSectionComponent />
+            <hr className={'divider'}/>
         </HolderComponent>
     );
 }

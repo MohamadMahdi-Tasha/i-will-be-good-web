@@ -11,3 +11,4 @@
 .black-container {@apply rounded-[24px] p-[24px] bg-black;}
 .small-paragraph {@apply text-[12px] text-grey font-light;}
 .big-paragraph {@apply text-[48px] text-grey font-light;}
+.divider {@apply my-[32px] border-2 border-black;}
