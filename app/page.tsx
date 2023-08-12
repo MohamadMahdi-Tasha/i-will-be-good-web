@@ -3,6 +3,7 @@
 import HolderComponent from "@/chunks/holderComponent";
 import HomeFirstSectionComponent from '@/components/homeSections/homeFirstSectionComponent';
 import HomeSecondSectionComponent from '@/components/homeSections/homeSecondSectionComponent';
+import HomeThirdSectionComponent from '@/components/homeSections/homeThirdSectionComponent';
 
 // Creating Home Page And Exporting It As Default
 export default function HomePage():JSX.Element {
@@ -13,6 +14,7 @@ export default function HomePage():JSX.Element {
             <hr className={'divider'}/>
             <HomeSecondSectionComponent />
             <hr className={'divider'}/>
+            <HomeThirdSectionComponent />
         </HolderComponent>
     );
 }
