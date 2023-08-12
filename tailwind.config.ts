@@ -11,7 +11,17 @@ const config: Config = {
     './chunks/*.{tsx,ts,js,jsx}',
     './components/*.{tsx,ts,js,jsx}',
   ],
-  theme: {},
+  theme: {
+    colors: {
+      headerBg: 'rgba(167, 167, 167, 0.20)',
+      grey: '#4B4B4B',
+      green: '#14FF00',
+      red: '#FF0000'
+    },
+    fontFamily: {
+      primary: ['roboto', 'sans-serif']
+    }
+  },
   plugins: [],
 }
 

@@ -7,10 +7,10 @@ import HolderComponent from '@/chunks/holderComponent';
 export default function HeaderComponent():JSX.Element {
     // Return JSX
     return (
-        <header>
-            <HolderComponent>
-                <h1>I WILL BE GOOD</h1>
-                <img src={ProfileImage.src} alt="Profile Image"/>
+        <header className={'bg-headerBg'}>
+            <HolderComponent className={'flex gap-3 items-center justify-between py-[10px]'}>
+                <h1 className={'tracking-widest text-black truncate'}>I WILL BE GOOD</h1>
+                <img className={'w-[50px] h-[50px] aspect-square object-cover rounded-full'} src={ProfileImage.src} alt="Profile Image"/>
             </HolderComponent>
         </header>
     );

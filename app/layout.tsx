@@ -24,7 +24,7 @@ export default function RootLayout({children}: propsType):JSX.Element {
     // Returning JSX
     return (
         <html lang="en">
-            <body>
+            <body className={'font-primary'}>
                 <HeaderComponent></HeaderComponent>
                 {children}
             </body>
