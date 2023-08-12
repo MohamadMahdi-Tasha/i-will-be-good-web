@@ -1,5 +1,6 @@
 // Codes By Mahdi Tasha
 // Importing Part
+import Link from 'next/link';
 import CheckboxComponent from "@/chunks/checkboxComponent";
 import WeekDaysComponent from "@/components/weekDaysComponent";
 
@@ -42,9 +43,9 @@ export default function HomeFirstSectionComponent():JSX.Element {
                 </div>
             </main>
             <footer>
-                <a className={'block'} href="#">
+                <Link className={'block'} href="/monthly/medications">
                     <button className={'border w-full truncate border-black rounded-[10px] p-[10px] text-center '}>Click here to see monthly</button>
-                </a>
+                </Link>
             </footer>
         </section>
     );
