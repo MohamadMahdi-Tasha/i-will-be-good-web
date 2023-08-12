@@ -16,7 +16,9 @@ const config: Config = {
       headerBg: 'rgba(167, 167, 167, 0.20)',
       grey: '#4B4B4B',
       green: '#14FF00',
-      red: '#FF0000'
+      red: '#FF0000',
+      black: '#000000',
+      white: '#ffffff'
     },
     fontFamily: {
       primary: ['roboto', 'sans-serif']
