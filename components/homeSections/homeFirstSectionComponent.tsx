@@ -40,10 +40,12 @@ export default function HomeFirstSectionComponent():JSX.Element {
                     <h3 className={'medium-title'}>Medications taken this week:</h3>
                     <WeekDaysComponent />
                 </div>
+            </main>
+            <footer>
                 <a className={'block'} href="#">
                     <button className={'border w-full border-black rounded-[10px] p-[10px] text-center '}>Click here to see monthly</button>
                 </a>
-            </main>
+            </footer>
         </section>
     );
 }
