@@ -1,3 +1,4 @@
+// Codes By Mahdi Tasha
 // Importing Configs Of TailwindCSS
 import type { Config } from 'tailwindcss'
 
