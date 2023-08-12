@@ -1,20 +1,18 @@
+// Importing Configs Of TailwindCSS
 import type { Config } from 'tailwindcss'
 
+// Defining Configs Of TailwindCSS
 const config: Config = {
   content: [
-    './pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
-    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './app/*.{tsx,ts,js,jsx}',
+    './app/**/*.{tsx,ts,js,jsx}',
+    './app/**/**/*.{tsx,ts,js,jsx}',
+    './chunks/*.{tsx,ts,js,jsx}',
+    './components/*.{tsx,ts,js,jsx}',
   ],
-  theme: {
-    extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-      },
-    },
-  },
+  theme: {},
   plugins: [],
 }
-export default config
+
+// Exporting Configs
+export default config;
