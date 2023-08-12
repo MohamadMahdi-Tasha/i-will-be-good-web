@@ -44,7 +44,7 @@ export default function HomeFirstSectionComponent():JSX.Element {
             </main>
             <footer>
                 <Link className={'block'} href="/monthly/medications">
-                    <button className={'border w-full truncate border-black rounded-[10px] p-[10px] text-center '}>Click here to see monthly</button>
+                    <button tabIndex={-1} className={'border w-full truncate border-black rounded-[10px] p-[10px] text-center '}>Click here to see monthly</button>
                 </Link>
             </footer>
         </section>
