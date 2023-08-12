@@ -23,7 +23,7 @@ export default function CheckboxComponent({isChecked, isDark, isLarge}:propsType
              data-checked={componentChecked}
              data-dark={isDark}
              data-large={isLarge}
-             className={'border flex items-center justify-center transition-all rounded-[5px] data-[large="true"]:w-[50px] data-[large="true"]:h-[50px] data-[large="false"]:w-[25px] data-[large="false"]:h-[25px] aspect-square data-[dark="false"]:data-[checked="true"]:bg-white data-[dark="false"]:data-[checked="false"]:bg-transparent data-[dark="false"]:border-white data-[dark="true"]:border-black data-[dark="true"]:data-[checked="false"]:bg-transparent data-[dark="true"]:data-[checked="true"]:bg-black data-[dark="false"]:text-black data-[dark="true"]:text-white'}
+             className={'border flex items-center justify-center transition-all data-[large="true"]:rounded-[12px] data-[large="false"]:rounded-[5px] data-[large="true"]:w-[50px] data-[large="true"]:h-[50px] data-[large="false"]:w-[25px] data-[large="false"]:h-[25px] aspect-square data-[dark="false"]:data-[checked="true"]:bg-white data-[dark="false"]:data-[checked="false"]:bg-transparent data-[dark="false"]:border-white data-[dark="true"]:border-black data-[dark="true"]:data-[checked="false"]:bg-transparent data-[dark="true"]:data-[checked="true"]:bg-black data-[dark="false"]:text-black data-[dark="true"]:text-white'}
              onClick={() => setComponentChecked(prevState => !prevState)}
         >
             {

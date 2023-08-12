@@ -5,11 +5,9 @@ import type { Config } from 'tailwindcss'
 // Defining Configs Of TailwindCSS
 const config: Config = {
   content: [
-    './app/*.{tsx,ts,js,jsx}',
-    './app/**/*.{tsx,ts,js,jsx}',
-    './app/**/**/*.{tsx,ts,js,jsx}',
-    './chunks/*.{tsx,ts,js,jsx}',
-    './components/*.{tsx,ts,js,jsx}',
+    './**/*.{tsx,ts,js,jsx}',
+    './**/**/*.{tsx,ts,js,jsx}',
+    './**/**/**/*.{tsx,ts,js,jsx}',
   ],
   theme: {
     colors: {
