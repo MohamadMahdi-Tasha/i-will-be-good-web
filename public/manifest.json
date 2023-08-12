@@ -1,0 +1,25 @@
+{
+  "name": "I Will Be Good - A Medication and meditation reminder app",
+  "short_name": "I Will Be Good",
+  "icons": [
+    {
+      "src": "../assets/img/manifest/img-logo-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "../assets/img/manifest/img-logo-256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "../assets/img/manifest/img-logo-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
