@@ -7,11 +7,11 @@ import LastMonthDaysFillerComponent from '@/components/calenderComponent/lastMon
 // Creating Calender Component And Exporting It As Default
 export default function CalenderComponent(): JSX.Element {
     // Using Dates
-    const today = new Date();
-    const todayDate = today.getDate();
-    const todayMonth = today.getMonth() + 1;
-    const doneDates = [1,2,3,4,5,7];
-    let thisMonthDaysNumber;
+    const today:Date = new Date();
+    const todayDate:number = today.getDate();
+    const todayMonth:number = today.getMonth() + 1;
+    const doneDates:number[] = [1,2,3,4,5,7];
+    let thisMonthDaysNumber:any;
 
     // Small Condition
     switch (todayMonth) {
