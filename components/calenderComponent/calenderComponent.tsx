@@ -10,7 +10,7 @@ export default function CalenderComponent(): JSX.Element {
     const today:Date = new Date();
     const todayDate:number = today.getDate();
     const todayMonth:number = today.getMonth() + 1;
-    const doneDates:number[] = [1,2,3,4,5,7];
+    const doneDates:number[] = [1,2,3,4,5,6,7,8,9,10,11,12];
     let thisMonthDaysNumber:any;
 
     // Small Condition
