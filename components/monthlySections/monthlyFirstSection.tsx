@@ -1,6 +1,6 @@
 // Codes By Mahdi Tasha
 // Importing Part
-import CalenderComponent from "@/components/calenderComponent";
+import CalenderComponent from "@/components/calenderComponent/calenderComponent";
 
 // Defining Type Of Props
 interface propsType {

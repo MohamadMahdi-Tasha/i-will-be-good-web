@@ -16,7 +16,8 @@ const config: Config = {
       green: '#14FF00',
       red: '#FF0000',
       black: '#000000',
-      white: '#ffffff'
+      white: '#ffffff',
+      blue: '#0057D9'
     },
     fontFamily: {
       primary: ['roboto', 'sans-serif']
