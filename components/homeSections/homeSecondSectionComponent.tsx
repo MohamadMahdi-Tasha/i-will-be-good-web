@@ -34,7 +34,7 @@ export default function HomeSecondSectionComponent():JSX.Element {
                 </p>
                 <div className={'mb-[20px]'}>
                     <h3 className={'medium-title'}>Medications taken this week:</h3>
-                    <WeekDaysComponent />
+                    <WeekDaysComponent datesArray={[false,false,false,true,false,false,false]} />
                 </div>
             </main>
             <footer>
