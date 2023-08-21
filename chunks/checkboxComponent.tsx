@@ -4,6 +4,7 @@
 
 // Importing Part
 import {ReactNode, useState} from "react";
+import data from "@/store";
 
 // Defining Type Of Props
 interface propsType {
@@ -11,10 +12,11 @@ interface propsType {
     isDark: boolean;
     isLarge: boolean;
     noAction?: boolean;
+    treatment?: string;
 }
 
 // Creating CheckBox Component And Exporting It As Default
-export default function CheckboxComponent({isChecked, isDark, isLarge, noAction = false}:propsType):ReactNode {
+export default function CheckboxComponent({isChecked, isDark, isLarge, noAction = false, treatment}:propsType):ReactNode {
     // Defining State Of Component
     const [componentChecked, setComponentChecked] = useState(isChecked);
 
@@ -25,10 +27,62 @@ export default function CheckboxComponent({isChecked, isDark, isLarge, noAction 
             data-dark={isDark}
             data-large={isLarge}
             tabIndex={(noAction) ? -1 : 1}
-            className={`border flex items-center justify-center transition-all data-[large="true"]:rounded-[12px] data-[large="false"]:rounded-[5px] data-[large="true"]:w-[50px] data-[large="true"]:h-[50px] data-[large="false"]:w-[25px] data-[large="false"]:h-[25px] aspect-square data-[dark="false"]:data-[checked="true"]:bg-white data-[dark="false"]:data-[checked="false"]:bg-transparent data-[dark="false"]:border-white data-[dark="true"]:border-black data-[dark="true"]:data-[checked="false"]:bg-transparent data-[dark="true"]:data-[checked="true"]:bg-black data-[dark="false"]:text-black data-[dark="true"]:text-white${(noAction) ? ' pointer-events-none' : false}`}
+            className={`border flex items-center justify-center transition-all data-[large="true"]:rounded-[12px] data-[large="false"]:rounded-[5px] data-[large="true"]:w-[50px] data-[large="true"]:h-[50px] data-[large="false"]:w-[25px] data-[large="false"]:h-[25px] aspect-square data-[dark="false"]:data-[checked="true"]:bg-white data-[dark="false"]:data-[checked="false"]:bg-transparent data-[dark="false"]:border-white data-[dark="true"]:border-black data-[dark="true"]:data-[checked="false"]:bg-transparent data-[dark="true"]:data-[checked="true"]:bg-black data-[dark="false"]:text-black data-[dark="true"]:text-white ${(noAction) ? 'pointer-events-none' : false}`}
             onClick={() => {
                 if (!noAction) {
+                    // Variables
+                    const today = new Date().toLocaleDateString();
+
+                    // Checking Or Unchecking Component
                     setComponentChecked(prevState => !prevState);
+
+                    // Done Different Things For Different Treatments
+                    if (treatment === 'sertraline') {
+                        // Finding Element With Date Of Today
+                        const todayObject = data.sertraline.find((item:any) => item.date === today)
+
+                        // If Founded Element Doesnt Exist, Then Create new Object.
+                        // Otherwise Set Done Property Of It To True If Checkbox Is Checked And False If Checkbox Is Uncheched
+                        if (todayObject === undefined) {
+                            data.sertraline.push({
+                                date: today,
+                                done: !componentChecked
+                            })
+                        } else {
+                            todayObject.done = !componentChecked
+                        }
+                    } else if (treatment === 'raspridone') {
+                        // Finding Element With Date Of Today
+                        const todayObject = data.rasprindone.find((item:any) => item.date === today)
+
+                        // If Founded Element Doesnt Exist, Then Create new Object.
+                        // Otherwise Set Done Property Of It To True If Checkbox Is Checked And False If Checkbox Is Uncheched
+                        if (todayObject === undefined) {
+                            data.rasprindone.push({
+                                date: today,
+                                done: !componentChecked
+                            })
+                        } else {
+                            todayObject.done = !componentChecked
+                        }
+                    } else {
+                        // Finding Element With Date Of Today
+                        const todayObject = data.meditation.find((item:any) => item.date === today)
+
+                        // If Founded Element Doesnt Exist, Then Create new Object.
+                        // Otherwise Set Done Property Of It To True If Checkbox Is Checked And False If Checkbox Is Uncheched
+                        if (todayObject === undefined) {
+                            data.meditation.push({
+                                date: today,
+                                done: !componentChecked
+                            })
+                        } else {
+                            todayObject.done = !componentChecked
+                        }
+                    }
+
+                    // Saving Data In Local Storage
+                    localStorage.setItem('doneTreatments', JSON.stringify(data));
                 }
             }}
         >

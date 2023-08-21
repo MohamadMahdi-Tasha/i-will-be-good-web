@@ -14,7 +14,7 @@ export default function HomeSecondSectionComponent():JSX.Element {
             </header>
             <main>
                 <div className={'flex items-center mb-[15px]'}>
-                    <CheckboxComponent isChecked={true} isLarge={false} isDark={true} />
+                    <CheckboxComponent treatment={'meditation'} isChecked={true} isLarge={false} isDark={true} />
                     <span className={'text-black truncate font-light text-[12px] ml-[10px]'}>Today’s meditations</span>
                 </div>
                 <p className={'small-paragraph mb-[20px]'}>
