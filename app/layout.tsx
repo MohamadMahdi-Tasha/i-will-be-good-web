@@ -1,4 +1,7 @@
 // Codes By Mahdi Tasha
+// Forcing Next.js To Render This Component As Client Component
+'use client';
+
 // Importing Part
 import {Metadata} from "next";
 import HeaderComponent from "@/components/headerComponent";
