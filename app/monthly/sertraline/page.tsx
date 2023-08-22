@@ -8,18 +8,18 @@ import HolderComponent from "@/chunks/holderComponent";
 import MonthlyFirstSection from "@/components/monthlySections/monthlyFirstSection";
 import MonthlySecondSection from "@/components/monthlySections/monthlySecondSection";
 
-// Creating Monthly Meditations Page And Exporting It As Default
-export default function MonthlyMeditations():JSX.Element {
+// Creating Monthly Sertraline Page And Exporting It As Default
+export default function MonthlySertralinePage():JSX.Element {
     // Redux Part
     const store:{} = useSelector(state => state);
-    const meditationState:[] = store.raspridone;
-    const doneMeditation:[] = meditationState.filter(item => item.isDone === true);
-    const doneMeditationDays:number = doneMeditation.map(item => new Date(item.date).getDate());
+    const sertralineState:{} = store.sertraline;
+    const doneSertraline:{} = sertralineState.filter(item => item.isDone === true);
+    const doneSertralineDays:number = doneSertraline.map(item => new Date(item.date).getDate());
 
     // Returning JSX
     return (
         <HolderComponent className={'py-[50px]'}>
-            <MonthlyFirstSection doneDates={doneMeditationDays} title={'Meditations taken this week:'} />
+            <MonthlyFirstSection doneDates={doneSertralineDays} title={'Sertraline taken this week:'} />
             <hr className={'divider'}/>
             <MonthlySecondSection />
         </HolderComponent>

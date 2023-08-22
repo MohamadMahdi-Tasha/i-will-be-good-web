@@ -4,13 +4,17 @@ import CalenderItemComponent from '@/components/calenderComponent/calenderItemCo
 import FirstMonthDaysFillerComponent from '@/components/calenderComponent/firstMonthDayFillerComponent';
 import LastMonthDaysFillerComponent from '@/components/calenderComponent/lastMonthDayFillerComponent';
 
+// Defining Type Of Props
+interface propsType {
+    doneDates: number[];
+}
+
 // Creating Calender Component And Exporting It As Default
-export default function CalenderComponent(): JSX.Element {
+export default function CalenderComponent({doneDates}:propsType): JSX.Element {
     // Using Dates
     const today:Date = new Date();
     const todayDate:number = today.getDate();
     const todayMonth:number = today.getMonth() + 1;
-    const doneDates:number[] = [1,2,3,4,5,6,7,8,9,10,11,12];
     let thisMonthDaysNumber:any;
 
     // Small Condition
@@ -46,6 +50,7 @@ export default function CalenderComponent(): JSX.Element {
                 {
                     [...Array(thisMonthDaysNumber)].map((item, index) => (
                         <CalenderItemComponent
+                            key={index}
                             isMonthDay={true}
                             name={(index + 1).toString()}
                             isDisabled={false}

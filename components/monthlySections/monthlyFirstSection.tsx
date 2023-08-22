@@ -5,16 +5,17 @@ import CalenderComponent from "@/components/calenderComponent/calenderComponent"
 // Defining Type Of Props
 interface propsType {
     title: string;
+    doneDates: number[];
 }
 
 // Creating Monthly Pages First Section Component And Exporting It As Default
-export default function MonthlyFirstSection({title}:propsType):JSX.Element {
+export default function MonthlyFirstSection({title, doneDates}:propsType):JSX.Element {
     // Return JSX
     return (
         <section>
             <header><h1 className={'big-title truncate'}>{title}</h1></header>
             <main className={'flex lg:flex-row flex-col gap-[20px]'}>
-                <CalenderComponent />
+                <CalenderComponent doneDates={doneDates} />
                 <p className={'small-paragraph lg:w-[50%] w-full'}>
                     Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                     <br/>

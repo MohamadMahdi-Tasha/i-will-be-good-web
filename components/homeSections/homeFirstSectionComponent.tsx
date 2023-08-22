@@ -62,13 +62,9 @@ export default function HomeFirstSectionComponent(): JSX.Element {
                     </div>
                 </div>
             </main>
-            <footer>
-                <Link className={'block'} href="/monthly/medications">
-                    <button tabIndex={-1}
-                            className={'border w-full truncate border-black rounded-[10px] p-[10px] text-center '}>Click
-                        here to see monthly
-                    </button>
-                </Link>
+            <footer className={'flex lg:flex-row flex-col lg:gap-[20px] gap-[10px]'}>
+                <Link className={'block lg:w-[50%] w-full'} href="/monthly/sertraline"><button tabIndex={-1} className={'border w-full truncate border-black rounded-[10px] p-[10px] text-center '}>Click here to see monthly sertraline</button></Link>
+                <Link className={'block lg:w-[50%] w-full'} href="/monthly/raspridone"><button tabIndex={-1} className={'border w-full truncate border-black rounded-[10px] p-[10px] text-center '}>Click here to see monthly rasperidone</button></Link>
             </footer>
         </section>
     );
