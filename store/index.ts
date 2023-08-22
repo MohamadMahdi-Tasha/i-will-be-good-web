@@ -6,9 +6,36 @@ import {configureStore, createSlice, Slice} from "@reduxjs/toolkit";
 const AppSlice:Slice = createSlice({
     name: 'App',
     initialState: {
-        sertraline: [],
-        raspridone: [],
-        meditation: [],
+        sertraline: [
+            {
+                date: '8/19/2023',
+                isDone: false
+            },
+            {
+                date: '8/20/2023',
+                isDone: true
+            },
+            {
+                date: '8/21/2023',
+                isDone: true
+            },
+            {
+                date: '8/22/2023',
+                isDone: true
+            }
+        ],
+        raspridone: [
+            {
+                date: '8/22/2023',
+                isDone: true
+            }
+        ],
+        meditation: [
+            {
+                date: '8/22/2023',
+                isDone: true
+            }
+        ],
     },
     reducers: {
         setItem(state,action) {

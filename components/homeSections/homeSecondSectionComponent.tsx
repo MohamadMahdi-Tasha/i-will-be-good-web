@@ -6,7 +6,6 @@
 import {useSelector} from "react-redux";
 import Link from 'next/link';
 import CheckboxComponent from "@/chunks/checkboxComponent";
-import WeekDaysComponent from "@/components/weekDaysComponent";
 
 // Creating Home Second Section Component And Exporting It As Default
 export default function HomeSecondSectionComponent():JSX.Element {
@@ -42,10 +41,6 @@ export default function HomeSecondSectionComponent():JSX.Element {
                     Meditation is a practice in which an individual uses a technique – such as mindfulness, or focuses the mind on a particular object, thought, or activity – to train attention and awareness, and achieve a mentally clear and emotionally calm and stable state.
                     Meditation is a practice in which an individual uses a technique – such as mindfulness, or focuses the mind on a particular object, thought, or activity – to train attention and awareness, and achieve a mentally clear and emotionally calm and stable state.
                 </p>
-                <div className={'mb-[20px]'}>
-                    <h3 className={'medium-title'}>Medications taken this week:</h3>
-                    <WeekDaysComponent datesArray={[false,false,false,true,false,false,false]} />
-                </div>
             </main>
             <footer>
                 <Link className={'block'} href="monthly/meditations" tabIndex={-1}>
