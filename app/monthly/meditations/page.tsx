@@ -12,7 +12,7 @@ import MonthlySecondSection from "@/components/monthlySections/monthlySecondSect
 export default function MonthlyMeditations():JSX.Element {
     // Redux Part
     const store:{} = useSelector(state => state);
-    const meditationState:[] = store.raspridone;
+    const meditationState:[] = store.meditation;
     const doneMeditation:[] = meditationState.filter(item => item.isDone === true);
     const doneMeditationDays:number = doneMeditation.map(item => new Date(item.date).getDate());
 
