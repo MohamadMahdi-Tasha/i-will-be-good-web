@@ -4,7 +4,6 @@
 
 // Importing Part
 import {ReactNode, useState} from "react";
-import data from "@/store";
 
 // Defining Type Of Props
 interface propsType {
@@ -35,54 +34,6 @@ export default function CheckboxComponent({isChecked, isDark, isLarge, noAction 
 
                     // Checking Or Unchecking Component
                     setComponentChecked(prevState => !prevState);
-
-                    // Done Different Things For Different Treatments
-                    if (treatment === 'sertraline') {
-                        // Finding Element With Date Of Today
-                        const todayObject = data.sertraline.find((item:any) => item.date === today)
-
-                        // If Founded Element Doesnt Exist, Then Create new Object.
-                        // Otherwise Set Done Property Of It To True If Checkbox Is Checked And False If Checkbox Is Uncheched
-                        if (todayObject === undefined) {
-                            data.sertraline.push({
-                                date: today,
-                                done: !componentChecked
-                            })
-                        } else {
-                            todayObject.done = !componentChecked
-                        }
-                    } else if (treatment === 'raspridone') {
-                        // Finding Element With Date Of Today
-                        const todayObject = data.rasprindone.find((item:any) => item.date === today)
-
-                        // If Founded Element Doesnt Exist, Then Create new Object.
-                        // Otherwise Set Done Property Of It To True If Checkbox Is Checked And False If Checkbox Is Uncheched
-                        if (todayObject === undefined) {
-                            data.rasprindone.push({
-                                date: today,
-                                done: !componentChecked
-                            })
-                        } else {
-                            todayObject.done = !componentChecked
-                        }
-                    } else {
-                        // Finding Element With Date Of Today
-                        const todayObject = data.meditation.find((item:any) => item.date === today)
-
-                        // If Founded Element Doesnt Exist, Then Create new Object.
-                        // Otherwise Set Done Property Of It To True If Checkbox Is Checked And False If Checkbox Is Uncheched
-                        if (todayObject === undefined) {
-                            data.meditation.push({
-                                date: today,
-                                done: !componentChecked
-                            })
-                        } else {
-                            todayObject.done = !componentChecked
-                        }
-                    }
-
-                    // Saving Data In Local Storage
-                    localStorage.setItem('doneTreatments', JSON.stringify(data));
                 }
             }}
         >

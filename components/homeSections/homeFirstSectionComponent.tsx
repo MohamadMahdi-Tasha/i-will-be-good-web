@@ -1,38 +1,11 @@
 // Codes By Mahdi Tasha
-// Forcing Next.js To Render This Component As Client Component
-'use client';
-
 // Importing Part
-import {useEffect, useState} from "react";
 import Link from 'next/link';
 import CheckboxComponent from "@/chunks/checkboxComponent";
 import WeekDaysComponent from "@/components/weekDaysComponent";
 
 // Creating Home First Section Component And Exporting It As Default
 export default function HomeFirstSectionComponent():JSX.Element {
-    // Defining States Of Component
-    const [isSertralineDone, setSertralineDone] = useState(false);
-    const [isRasperidoneDone, setRasperidoneDone] = useState(false);
-
-    useEffect(() => {
-        // Variables
-        const today = new Date().toLocaleDateString();
-        const doneTreatmentsInLocalStorage = localStorage.getItem('doneTreatments');
-
-        // A Condition To Know If Done Things Exists In Local Storage
-        if (doneTreatmentsInLocalStorage !== null) {
-            // Variables
-            const objectOfDoneTreatments = JSON.parse(doneTreatmentsInLocalStorage);
-            const sertralineOfDoneTreatments = objectOfDoneTreatments.sertraline.find((item:any) => item.date === today);
-            const raspridoneOfDoneTreatments = objectOfDoneTreatments.rasprindone.find((item:any) => item.date === today);
-
-            (sertralineOfDoneTreatments) ? setSertralineDone(sertralineOfDoneTreatments.done) : setSertralineDone(false);
-            (raspridoneOfDoneTreatments) ? setRasperidoneDone(raspridoneOfDoneTreatments.done) : setRasperidoneDone(false);
-        } else {
-            alert('asd')
-        }
-    })
-
     // Return JSX
     return (
         <section>
@@ -45,11 +18,11 @@ export default function HomeFirstSectionComponent():JSX.Element {
                         <h3 className={'small-title truncate'}>Today’s medication todo :</h3>
                         <div className={'mb-[30px]'}>
                             <div className={'flex items-center mb-[15px]'}>
-                                <CheckboxComponent isChecked={isSertralineDone} isDark={false} isLarge={false} treatment={'sertraline'} />
+                                <CheckboxComponent isChecked={false} isDark={false} isLarge={false} treatment={'sertraline'} />
                                 <span className={'text-white truncate font-light text-[12px] ml-[10px]'}>Sertraline (the after lunch medication)</span>
                             </div>
                             <div className={'flex items-center'}>
-                                <CheckboxComponent isChecked={isRasperidoneDone} isDark={false} isLarge={false} treatment={'raspridone'} />
+                                <CheckboxComponent isChecked={false} isDark={false} isLarge={false} treatment={'raspridone'} />
                                 <span className={'text-white truncate font-light text-[12px] ml-[10px]'}>Rasperidone (the after dinner medication)</span>
                             </div>
                         </div>
