@@ -4,6 +4,8 @@
 
 // Importing Part
 import {ReactNode, useState} from "react";
+import {useSelector, useDispatch} from "react-redux";
+import {ActionsOfAppSlice} from '@/store';
 
 // Defining Type Of Props
 interface propsType {
@@ -19,6 +21,10 @@ export default function CheckboxComponent({isChecked, isDark, isLarge, noAction 
     // Defining State Of Component
     const [componentChecked, setComponentChecked] = useState(isChecked);
 
+    // Redux Part
+    const state:Object = useSelector(state => state);
+    const dispatchHook = useDispatch();
+
     // Returning JSX
     return (
         <button
@@ -29,11 +35,14 @@ export default function CheckboxComponent({isChecked, isDark, isLarge, noAction 
             className={`border flex items-center justify-center transition-all data-[large="true"]:rounded-[12px] data-[large="false"]:rounded-[5px] data-[large="true"]:w-[50px] data-[large="true"]:h-[50px] data-[large="false"]:w-[25px] data-[large="false"]:h-[25px] aspect-square data-[dark="false"]:data-[checked="true"]:bg-white data-[dark="false"]:data-[checked="false"]:bg-transparent data-[dark="false"]:border-white data-[dark="true"]:border-black data-[dark="true"]:data-[checked="false"]:bg-transparent data-[dark="true"]:data-[checked="true"]:bg-black data-[dark="false"]:text-black data-[dark="true"]:text-white ${(noAction) ? 'pointer-events-none' : false}`}
             onClick={() => {
                 if (!noAction) {
-                    // Variables
-                    const today = new Date().toLocaleDateString();
-
                     // Checking Or Unchecking Component
                     setComponentChecked(prevState => !prevState);
+
+                    // Dispatching Treatment Type And Its Status To Store
+                    dispatchHook(ActionsOfAppSlice.setItem({
+                        treatment: treatment,
+                        isDone: !componentChecked
+                    }));
                 }
             }}
         >
