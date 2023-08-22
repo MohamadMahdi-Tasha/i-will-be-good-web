@@ -1,11 +1,23 @@
 // Codes By Mahdi Tasha
+// Forcing Next.js To Render This Component As Client Component
+'use client';
+
 // Importing Part
+import {useSelector} from "react-redux";
 import Link from 'next/link';
 import CheckboxComponent from "@/chunks/checkboxComponent";
 import WeekDaysComponent from "@/components/weekDaysComponent";
 
 // Creating Home First Section Component And Exporting It As Default
 export default function HomeFirstSectionComponent():JSX.Element {
+    // Redux Part
+    const store:{}[] = useSelector(state => state);
+    const today:string = new Date().toLocaleDateString();
+    const sertralineState:{} = store.sertraline;
+    const raspridoneState:{} = store.raspridone;
+    const sertralineItem:{}|null|undefined = sertralineState.find((item:any) => item.date === today);
+    const raspridoneItem:{}|null|undefined = raspridoneState.find((item:any) => item.date === today);
+
     // Return JSX
     return (
         <section>
@@ -18,11 +30,11 @@ export default function HomeFirstSectionComponent():JSX.Element {
                         <h3 className={'small-title truncate'}>Today’s medication todo :</h3>
                         <div className={'mb-[30px]'}>
                             <div className={'flex items-center mb-[15px]'}>
-                                <CheckboxComponent isChecked={false} isDark={false} isLarge={false} treatment={'sertraline'} />
+                                <CheckboxComponent isChecked={(sertralineItem) ? sertralineItem.isDone : false} isDark={false} isLarge={false} treatment={'sertraline'} />
                                 <span className={'text-white truncate font-light text-[12px] ml-[10px]'}>Sertraline (the after lunch medication)</span>
                             </div>
                             <div className={'flex items-center'}>
-                                <CheckboxComponent isChecked={false} isDark={false} isLarge={false} treatment={'raspridone'} />
+                                <CheckboxComponent isChecked={(raspridoneItem) ? sertralineItem.isDone : false} isDark={false} isLarge={false} treatment={'raspridone'} />
                                 <span className={'text-white truncate font-light text-[12px] ml-[10px]'}>Rasperidone (the after dinner medication)</span>
                             </div>
                         </div>

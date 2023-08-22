@@ -1,11 +1,21 @@
 // Codes By Mahdi Tasha
+// Forcing Next.js To Render This Component As Client Component
+'use client';
+
 // Importing Part
+import {useSelector} from "react-redux";
 import Link from 'next/link';
 import CheckboxComponent from "@/chunks/checkboxComponent";
 import WeekDaysComponent from "@/components/weekDaysComponent";
 
 // Creating Home Second Section Component And Exporting It As Default
 export default function HomeSecondSectionComponent():JSX.Element {
+    // Redux Part
+    const store:{}[] = useSelector(state => state);
+    const today:string = new Date().toLocaleDateString();
+    const meditationState:{} = store.meditation;
+    const meditationItem:{}|null|undefined = meditationState.find((item:any) => item.date === today);
+
     // Return JSX
     return (
         <section>
@@ -14,7 +24,7 @@ export default function HomeSecondSectionComponent():JSX.Element {
             </header>
             <main>
                 <div className={'flex items-center mb-[15px]'}>
-                    <CheckboxComponent treatment={'meditation'} isChecked={true} isLarge={false} isDark={true} />
+                    <CheckboxComponent treatment={'meditation'} isChecked={(meditationItem) ? meditationItem.isDone : false} isLarge={false} isDark={true} />
                     <span className={'text-black truncate font-light text-[12px] ml-[10px]'}>Today’s meditations</span>
                 </div>
                 <p className={'small-paragraph mb-[20px]'}>
