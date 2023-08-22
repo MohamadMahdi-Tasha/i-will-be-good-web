@@ -4,6 +4,8 @@ import {Metadata} from "next";
 import HeaderComponent from "@/components/headerComponent";
 import FooterComponent from "@/components/footerComponent";
 import '@/app/index.css';
+import {Provider} from "react-redux";
+import AppState from "@/store";
 
 // Creating And Exporting Meta Data Of Pages
 export const metadata: Metadata = {
@@ -26,9 +28,11 @@ export default function RootLayout({children}: propsType):JSX.Element {
     return (
         <html lang="en">
             <body className={'font-primary'}>
-                <HeaderComponent />
-                {children}
-                <FooterComponent />
+                <Provider store={AppState}>
+                    <HeaderComponent />
+                    {children}
+                    <FooterComponent />
+                </Provider>
             </body>
         </html>
     );

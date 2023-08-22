@@ -3,7 +3,7 @@
 import {configureStore, createSlice, Slice} from "@reduxjs/toolkit";
 
 // Creating Slice
-const appSlice:Slice = createSlice({
+const AppSlice:Slice = createSlice({
     name: 'App',
     initialState: {
         sertraline: [],
@@ -14,8 +14,8 @@ const appSlice:Slice = createSlice({
 })
 
 // Exporting Actions To Use
-export const actionsOfAppSlice = appSlice.actions;
+export const actionsOfAppSlice = AppSlice.actions;
 
 // Configuring Store And Exporting The Store As Default
-const appState = configureStore({reducer: appSlice.reducer})
-export default appState;
+const AppState = configureStore({reducer: AppSlice.reducer})
+export default AppState;
