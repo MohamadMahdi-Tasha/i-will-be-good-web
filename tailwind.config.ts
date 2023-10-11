@@ -1,30 +1,20 @@
-// Codes By Mahdi Tasha
-// Importing Configs Of TailwindCSS
 import type { Config } from 'tailwindcss'
 
-// Defining Configs Of TailwindCSS
 const config: Config = {
   content: [
-    './**/*.{tsx,ts,js,jsx}',
-    './**/**/*.{tsx,ts,js,jsx}',
-    './**/**/**/*.{tsx,ts,js,jsx}',
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    colors: {
-      headerBg: 'rgba(167, 167, 167, 0.20)',
-      grey: '#4B4B4B',
-      green: '#14FF00',
-      red: '#FF0000',
-      black: '#000000',
-      white: '#ffffff',
-      blue: '#0057D9'
+    extend: {
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'gradient-conic':
+          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      },
     },
-    fontFamily: {
-      primary: ['roboto', 'sans-serif']
-    }
   },
   plugins: [],
 }
-
-// Exporting Configs
-export default config;
+export default config
