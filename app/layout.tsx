@@ -3,6 +3,14 @@
 import {Metadata} from "next";
 import {ReactNode} from "react";
 import '@/app/index.css';
+import {Roboto} from "next/font/google";
+import {NextFont} from "next/dist/compiled/@next/font";
+
+// Defining Roboto Font
+const RobotoFont:NextFont = Roboto({
+    weight: ['300','400','500','700','900'],
+    subsets: ['latin']
+})
 
 // Defining Metadata Of Pages
 export const metadata:Metadata = {
@@ -32,7 +40,7 @@ export default function LayoutComponent({children}:propsType):ReactNode {
     // Returning JSX
     return (
         <html>
-            <body>
+            <body className={RobotoFont.className}>
                 {children}
             </body>
         </html>
