@@ -1,0 +1,27 @@
+{
+  "name": "I WILL BE GOOD",
+  "short_name": "IWBG",
+  "orientation": "portrait",
+  "description": "I will be good is dpdr web made for treating dpdr with saving your meditation and medication's",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#00000",
+  "background_color": "#ffffff",
+  "icons": [
+    {
+      "src": "./assets/img/manifest/img-logo-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./assets/img/manifest/img-logo-256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "./assets/img/manifest/img-logo-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
