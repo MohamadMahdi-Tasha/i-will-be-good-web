@@ -8,8 +8,8 @@ export default function HeaderComponent():ReactNode {
     // Returning JSX
     return (
         <header className={'bg-black/20 backdrop-blur'}>
-            <HolderComponent className={'flex items-center justify-center'}>
-                <h3 className={'font-normal text-center tracking-[7px] text-[26px]'}>I WILL BE GOOD</h3>
+            <HolderComponent className={'flex items-center lg:justify-center'}>
+                <h3 className={'font-normal lg:text-center tracking-[7px] lg:text-[26px] text-[20px]'}>I WILL BE GOOD</h3>
             </HolderComponent>
         </header>
     );

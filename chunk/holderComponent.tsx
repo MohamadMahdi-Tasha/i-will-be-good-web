@@ -12,7 +12,7 @@ interface propsType {
 export default function HolderComponent({children, className}:propsType):ReactNode {
     // Returning JSX
     return (
-        <div className={(className !== null) ? `lg:p-[20px] p-[10px] max-w-[1100px] mx-auto ${className}` : 'lg:p-[20px] p-[10px] max-w-[1100px] mx-auto'}>
+        <div className={(className !== null) ? `p-[20px] max-w-[1100px] mx-auto ${className}` : 'p-[20px] max-w-[1100px] mx-auto'}>
             {children}
         </div>
     );
