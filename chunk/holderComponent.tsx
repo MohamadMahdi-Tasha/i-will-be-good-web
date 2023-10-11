@@ -5,13 +5,14 @@ import {ReactNode} from "react";
 // Defining Type Of Props
 interface propsType {
     children: ReactNode;
+    className?: string;
 }
 
 // Creating And Exporting Holder Component As Default
-export default function HolderComponent({children}:propsType):ReactNode {
+export default function HolderComponent({children, className}:propsType):ReactNode {
     // Returning JSX
     return (
-        <div>
+        <div className={(className !== null) ? `lg:p-[20px] p-[10px] max-w-[1100px] mx-auto ${className}` : 'lg:p-[20px] p-[10px] max-w-[1100px] mx-auto'}>
             {children}
         </div>
     );

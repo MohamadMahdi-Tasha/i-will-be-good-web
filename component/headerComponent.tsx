@@ -7,9 +7,9 @@ import HolderComponent from "@/chunk/holderComponent";
 export default function HeaderComponent():ReactNode {
     // Returning JSX
     return (
-        <header>
-            <HolderComponent>
-                <h3>I WILL BE GOOD</h3>
+        <header className={'bg-black/20 backdrop-blur'}>
+            <HolderComponent className={'flex items-center justify-center'}>
+                <h3 className={'font-normal text-center tracking-[7px] text-[26px]'}>I WILL BE GOOD</h3>
             </HolderComponent>
         </header>
     );
