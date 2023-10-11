@@ -5,6 +5,7 @@ import {ReactNode} from "react";
 import '@/app/index.css';
 import {Roboto} from "next/font/google";
 import {NextFont} from "next/dist/compiled/@next/font";
+import HeaderComponent from "@/component/headerComponent";
 
 // Defining Roboto Font
 const RobotoFont:NextFont = Roboto({
@@ -41,6 +42,7 @@ export default function LayoutComponent({children}:propsType):ReactNode {
     return (
         <html>
             <body className={RobotoFont.className}>
+                <HeaderComponent />
                 {children}
             </body>
         </html>
