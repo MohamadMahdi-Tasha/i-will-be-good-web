@@ -2,6 +2,7 @@
 // Importing Part
 import {Metadata} from "next";
 import {ReactNode} from "react";
+import '@/app/index.css';
 
 // Defining Metadata Of Pages
 export const metadata:Metadata = {
