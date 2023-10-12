@@ -19,3 +19,11 @@
 .paragraph {@apply text-gray-600 font-normal text-[19px] block;}
 .inner-title {@apply text-white font-normal text-[18px] truncate block;}
 .section-divider {@apply my-[70px] border-black border-[2px];}
+.calender-week-days {@apply aspect-square text-[16px] font-normal flex justify-center items-center border border-white bg-black rounded-[10px] text-white;}
+.calender-month-days {@apply aspect-square text-black text-[16px] font-normal flex justify-center items-center rounded-[10px] border;}
+.calender-month-days.not-done:not(.today) {@apply bg-[#F00] border-[#F00];}
+.calender-month-days.done:not(.today) {@apply bg-[#14FF00] border-[#14FF00];}
+.calender-month-days.not-yet {@apply bg-white border-white;}
+.calender-month-days.disabled {@apply bg-white/50 border-white/50;}
+.calender-month-days.today.not-done {@apply bg-sky-500 border-[#F00];}
+.calender-month-days.today.done {@apply bg-sky-500 border-[#14FF00];}

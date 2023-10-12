@@ -18,8 +18,8 @@ const RobotoFont:NextFont = Roboto({
 export const metadata:Metadata = {
     title: "I WILL BE GOOD",
     viewport: 'width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0',
-    manifest: './manifest.json',
-    robots: './robots.txt',
+    manifest: '/manifest.json',
+    robots: '/robots.txt',
     themeColor: '#00000',
     openGraph: {
         title: "I WILL BE GOOD | DPDR Recovery App",

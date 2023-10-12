@@ -13,13 +13,13 @@ export default function WeeklyReportItemComponent({isChecked, index}:propsType):
     // Defining Day Name Component
     function DayNameComponent():ReactNode {
         switch (index) {
-            case 0 : return 'MON' ; break;
-            case 1 : return 'TUE' ; break;
-            case 2 : return 'WED' ; break;
-            case 3 : return 'THU' ; break;
-            case 4 : return 'FRI' ; break;
-            case 5 : return 'SAT' ; break;
-            case 6 : return 'SUN' ; break;
+            case 0 : return 'SUN' ; break;
+            case 1 : return 'MON' ; break;
+            case 2 : return 'TUE' ; break;
+            case 3 : return 'WED' ; break;
+            case 4 : return 'THU' ; break;
+            case 5 : return 'FRI' ; break;
+            case 6 : return 'SAT' ; break;
             default : return '' ; break;
         }
     }
