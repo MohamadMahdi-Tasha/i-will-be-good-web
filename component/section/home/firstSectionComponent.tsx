@@ -1,8 +1,7 @@
 // Codes By Mahdi Tasha
 // Importing Part
 import {ReactNode} from "react";
-import WeeklyReportComponent from "@/component/weeklyReport/weeklyReportComponent";
-import Link from "next/link";
+import WeeklyReportOfTreatmentComponent from "@/component/weeklyReport/weeklyReportOfTreatmentComponent";
 
 // Creating And Exporting First Section Of Home Page As Default
 export default function FirstSectionComponent():ReactNode {
@@ -51,16 +50,8 @@ export default function FirstSectionComponent():ReactNode {
                     </p>
                 </div>
                 <div>
-                    <div className={'mb-[50px]'}>
-                        <h5 className={'subtitle'}>Monthly sertraline record:</h5>
-                        <WeeklyReportComponent weekArray={[true,true,true,true,false,false,false]} />
-                        <Link className={'rounded-[10px] p-[10px] border border-black w-full text-center truncate text-[18px] text-red-black font-normal block mt-[15px]'} href={'/'}>See monthly record of sertraline.</Link>
-                    </div>
-                    <div>
-                        <h5 className={'subtitle'}>Monthly raspridone record:</h5>
-                        <WeeklyReportComponent weekArray={[true,true,true,true,false,false,false]} />
-                        <Link className={'rounded-[10px] p-[10px] border border-black w-full text-center truncate text-[18px] text-red-black font-normal block mt-[15px]'} href={'/'}>See monthly record of raspridone.</Link>
-                    </div>
+                    <WeeklyReportOfTreatmentComponent weekArray={[true,true,true,true,false,false,false]} treatment={'sertraline'} link={'/medication/sertraline'} className={'mb-[50px]'} />
+                    <WeeklyReportOfTreatmentComponent weekArray={[true,true,true,true,false,false,false]} treatment={'risperidone'} link={'/medication/risperidone'} />
                 </div>
             </main>
         </section>
