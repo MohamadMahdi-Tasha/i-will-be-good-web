@@ -42,7 +42,7 @@ export default function LayoutComponent({children}:propsType):ReactNode {
     // Returning JSX
     return (
         <html>
-            <body className={RobotoFont.className}>
+            <body className={`${RobotoFont.className} pt-[70px] bg-white`}>
                 <HeaderComponent />
                 {children}
                 <FooterComponent />
