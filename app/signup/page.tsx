@@ -3,10 +3,11 @@
 'use client';
 
 // Importing Part
-import {ReactNode, useState, Dispatch, ChangeEvent, useEffect} from 'react';
+import {ReactNode, useState, Dispatch, ChangeEvent} from 'react';
 import Link from "next/link";
 import HolderComponent from "@/chunk/holderComponent";
 import {createClient, SupabaseClient} from "@supabase/supabase-js";
+import useUserLoggedIn from "@/hook/useUserLoggedIn";
 
 // Defining Supabase
 const supabaseUrl:string = 'https://yksflugprafkjwrfrxql.supabase.co'
@@ -21,8 +22,9 @@ export default function SignupPage():ReactNode {
     const [isErrored, setErrored]:[boolean, Dispatch<boolean>] = useState(false);
     const [isFetching, setFetching]:[boolean, Dispatch<boolean>] = useState(false);
     const [isEmailSended, setEmailSended]:[boolean, Dispatch<boolean>] = useState(false);
-    const [isUserLoggedInFetching, setUserLoggedInFetching]:[boolean, Dispatch<boolean>] = useState(true);
-    const [isUserLoggedIn, setUserLoggedIn]:[boolean, Dispatch<boolean>] = useState(false);
+
+    // Checking If User Is Logged In
+    const [isUserLoggedInFetching, isUserLoggedIn] = useUserLoggedIn();
 
     // Handling Form Submit
     async function handleFormSubmit(event:any):Promise<void> {
@@ -44,22 +46,6 @@ export default function SignupPage():ReactNode {
             setEmailSended(true);
         }
     }
-
-    // Checking If User Is Logged In
-    useEffect(() => {
-        (async function isUseSignedIn():Promise<void> {
-            setUserLoggedInFetching(true);
-            const { data: { user } }:any = await supabase.auth.getUser();
-
-            if (user.aud === undefined) {
-                setUserLoggedIn(false);
-                setUserLoggedInFetching(false);
-            } else {
-                setUserLoggedIn(true);
-                setUserLoggedInFetching(false);
-            }
-        })();
-    }, [])
 
     // Returning JSX
     return (

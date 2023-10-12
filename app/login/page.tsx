@@ -3,11 +3,12 @@
 'use client';
 
 // Importing Part
-import {ChangeEvent, Dispatch, ReactNode, useEffect, useState} from 'react';
+import {ChangeEvent, Dispatch, ReactNode, useState} from 'react';
 import HolderComponent from "@/chunk/holderComponent";
 import Link from 'next/link';
 import {createClient, SupabaseClient} from "@supabase/supabase-js";
 import {useRouter} from "next/navigation";
+import useUserLoggedIn from "@/hook/useUserLoggedIn";
 
 // Defining Supabase
 const supabaseUrl:string = 'https://yksflugprafkjwrfrxql.supabase.co'
@@ -21,8 +22,9 @@ export default function LoginPage():ReactNode {
     const [passwordValue, setPasswordValue]:[string, Dispatch<string>] = useState('');
     const [isErrored, setErrored]:[boolean, Dispatch<boolean>] = useState(false);
     const [isFetching, setFetching]:[boolean, Dispatch<boolean>] = useState(false);
-    const [isUserLoggedInFetching, setUserLoggedInFetching]:[boolean, Dispatch<boolean>] = useState(true);
-    const [isUserLoggedIn, setUserLoggedIn]:[boolean, Dispatch<boolean>] = useState(false);
+
+    // Checking If User Is Logged In
+    const [isUserLoggedInFetching, isUserLoggedIn] = useUserLoggedIn();
 
     // Defining Use Router Hook
     const router = useRouter();
@@ -47,22 +49,6 @@ export default function LoginPage():ReactNode {
             router.push('/')
         }
     }
-
-    // Checking If User Is Logged In
-    useEffect(() => {
-        (async function isUseSignedIn():Promise<void> {
-            setUserLoggedInFetching(true);
-            const { data: { user } }:any = await supabase.auth.getUser();
-
-            if (user.aud === undefined) {
-                setUserLoggedIn(false);
-                setUserLoggedInFetching(false);
-            } else {
-                setUserLoggedIn(true);
-                setUserLoggedInFetching(false);
-            }
-        })();
-    }, [])
 
     // Returning JSX
     return (
@@ -116,8 +102,8 @@ export default function LoginPage():ReactNode {
                                             <Link className={'text-center text-white truncate block text-[18px] font-light'} href={'/signup'}>
                                                 Got No Account?
                                                 <span className={'font-bold'}>
-                                    Create One
-                                </span>
+                                                    Create One
+                                                </span>
                                             </Link>
                                         </div>
                                     </form>
