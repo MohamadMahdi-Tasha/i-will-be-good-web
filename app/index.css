@@ -18,7 +18,7 @@
 .inner-paragraph {@apply text-white/80 font-normal text-[16px] block;}
 .paragraph {@apply text-gray-600 font-normal text-[19px] block;}
 .inner-title {@apply text-white font-normal text-[18px] truncate block;}
-.section-divider {@apply my-[70px] border-black border-[2px];}
+.section-divider {@apply lg:my-[70px] my-[20px] border-black border-[2px];}
 .calender-week-days {@apply aspect-square text-[16px] font-normal flex justify-center items-center border border-white bg-black rounded-[10px] text-white;}
 .calender-month-days {@apply aspect-square text-black text-[16px] font-normal flex justify-center items-center rounded-[10px] border;}
 .calender-month-days.not-done:not(.today) {@apply bg-[#F00] border-[#F00];}

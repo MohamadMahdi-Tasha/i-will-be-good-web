@@ -42,8 +42,8 @@ export default function CalenderComponent({doneDaysArray}:propsType):ReactNode {
 
     // Returning JSX
     return (
-        <div className={'bg-black rounded-[20px] py-[30px] px-[20px]'}>
-            <div className={'grid grid-cols-7 gap-[20px] mb-[20px]'}>
+        <div className={'bg-black rounded-[20px] lg:gap-[20px] gap-[10px] lg:py-[30px] py-[20px] px-[20px]'}>
+            <div className={'grid grid-cols-7 lg:gap-[20px] gap-[10px] lg:mb-[20px] mb-[10px]'}>
                 <div className={'calender-week-days'}>S</div>
                 <div className={'calender-week-days'}>M</div>
                 <div className={'calender-week-days'}>T</div>
@@ -52,7 +52,7 @@ export default function CalenderComponent({doneDaysArray}:propsType):ReactNode {
                 <div className={'calender-week-days'}>F</div>
                 <div className={'calender-week-days'}>S</div>
             </div>
-            <div className={'grid grid-cols-7 gap-[20px]'}>
+            <div className={'grid grid-cols-7 lg:gap-[20px] gap-[10px]'}>
                 {
                     [...Array(countOfBeforeToday)].map((item, index:number) => (
                         <div key={index} className={'calender-month-days disabled'} />

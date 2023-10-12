@@ -13,7 +13,7 @@ export default function RispridonePage():ReactNode {
             <section>
                 <main>
                     <h2 className={'title'}>Monthly report of rispridone:</h2>
-                    <div className={'grid sm:grid-cols-2 sm:gap-[20px] gap-[10px]'}>
+                    <div className={'grid lg:grid-cols-2 lg:gap-[20px] gap-[10px]'}>
                         <CalenderComponent doneDaysArray={[1,2,3]} />
                         <p className={'paragraph'}>used to treat schizophrenia and bipolar Common side effects include severe depression, movement problems, sleepiness, dizziness, trouble seeing, constipation, and increased weight.Study of risperidone began in the late 1980s and it was approved for sale in the United States in 1993.And its a antypsycotic.</p>
                     </div>
