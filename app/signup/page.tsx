@@ -13,7 +13,7 @@ export default function SignupPage():ReactNode {
                 <main>
                     <form className={'mx-auto max-w-[500px] lg:p-[30px] p-[10px] rounded-[10px] bg-black'} action="#">
                         <div>
-                            <h1 className={'text-[28px] mb-[10px] truncate text-center font-bold text-white'}>Login</h1>
+                            <h1 className={'text-[28px] mb-[10px] truncate text-center font-bold text-white'}>Sign Up</h1>
                             <div className={'mb-[20px]'}>
                                 <label className={'label mb-[10px]'} htmlFor="email-input">Email:</label>
                                 <input required placeholder={'yours@gmail.com'} className={'input'} type="email" id={'email-input'} name={'email-input'} />
@@ -23,8 +23,8 @@ export default function SignupPage():ReactNode {
                                 <input required placeholder={'Mahdi'} className={'input'} type="text" id={'name-input'} name={'name-input'} />
                             </div>
                             <div className={'mb-[30px]'}>
-                                <label className={'label mb-[10px]'} htmlFor="email-input">Password:</label>
-                                <input required placeholder={'XXXXXXXX'} min={8} max={12} className={'input'} type="password" id={'email-input'} name={'email-input'} />
+                                <label className={'label mb-[10px]'} htmlFor="password-input">Password:</label>
+                                <input required placeholder={'XXXXXXXX'} min={8} max={12} className={'input'} type="password" id={'password-input'} name={'password-input'} />
                             </div>
                             <button className={'submit-btn'}>Submit</button>
                         </div>

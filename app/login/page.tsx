@@ -19,8 +19,8 @@ export default function LoginPage():ReactNode {
                                 <input required placeholder={'yours@gmail.com'} className={'input'} type="email" id={'email-input'} name={'email-input'} />
                             </div>
                             <div className={'mb-[30px]'}>
-                                <label className={'label mb-[10px]'} htmlFor="email-input">Password:</label>
-                                <input required placeholder={'XXXXXXXX'} min={8} max={12} className={'input'} type="password" id={'email-input'} name={'email-input'} />
+                                <label className={'label mb-[10px]'} htmlFor="password-input">Password:</label>
+                                <input required placeholder={'XXXXXXXX'} min={8} max={12} className={'input'} type="password" id={'password-input'} name={'password-input'} />
                             </div>
                             <button className={'submit-btn'}>Submit</button>
                         </div>
