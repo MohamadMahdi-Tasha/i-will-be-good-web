@@ -14,12 +14,7 @@ export default function SecondSectionComponent():ReactNode {
                     <input className={'checkbox dark'} type="checkbox" id={'sertraline-today-checkbox'}/>
                     <label className={'label dark'} htmlFor="sertraline-today-checkbox">Sertraline (the after lunch medication)</label>
                 </div>
-                <p className={'paragraph mb-[50px]'}>
-                    Meditation is a practice in which an individual uses a technique – such as mindfulness, or focuses the mind on a particular object, thought, or activity – to train attention and awareness, and achieve a mentally clear and emotionally calm and stable state.
-                    <br/>
-                    <br/>
-                    Meditation is practiced in numerous religious traditions. The earliest records of meditation (dhyana) are found in the Upanishads, and meditation plays a salient role in the contemplative repertoire of Hinduism, Jainism and Buddhism.Since the 19th century, Asian meditative techniques have spread to other cultures where they have also found application in non-spiritual contexts, such as business and health.
-                </p>
+                <p className={'paragraph mb-[50px]'}>Meditation is a practice in which an individual uses a technique – such as mindfulness, or focuses the mind on a particular object, thought, or activity – to train attention and awareness, and achieve a mentally clear and emotionally calm and stable state.</p>
                 <WeeklyReportOfTreatmentComponent weekArray={[true,true,true,true,false,false,false]} treatment={'meditation'} link={'/meditation'} />
             </main>
         </section>
