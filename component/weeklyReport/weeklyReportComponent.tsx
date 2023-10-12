@@ -12,9 +12,13 @@ interface propsType {
 export default function WeeklyReportComponent({weekArray}:propsType):ReactNode {
     // Returning JSX
     return (
-        <div className={'py-[30px] px-[20px] bg-black rounded-[20px] lg:overflow-hidden overflow-auto'}>
-            <div className={'lg:grid lg:grid-cols-7 flex lg:gap-[30px] gap-[20px] max-w-[700px] mx-auto'}>
-                {weekArray.map((item:boolean, index:number) => <WeeklyReportItemComponent index={index} isChecked={item} />)}
+        <div className={'bg-black rounded-[20px] lg:overflow-x-hidden overflow-x-auto overflow-y-hidden py-[30px] px-[20px]'}>
+            <div className={'lg:grid flex justify-between items-center lg:grid-cols-7 gap-[30px] max-w-[700px] mx-auto lg:[&>div:last-of-type]:pr-0 [&>div:last-of-type]:pr-[20px]'}>
+                {
+                    weekArray.map((item:boolean, index:number) => (
+                        <WeeklyReportItemComponent index={index} isChecked={item} />
+                    ))
+                }
             </div>
         </div>
     );
