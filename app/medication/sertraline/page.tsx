@@ -6,6 +6,6 @@ import {ReactNode} from "react";
 export default function SertralinePage():ReactNode {
     // Returning JSX
     return (
-        <h1>Home Page</h1>
+        <h1>Sertraline Page</h1>
     );
 }

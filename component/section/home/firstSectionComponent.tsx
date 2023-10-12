@@ -18,8 +18,8 @@ export default function FirstSectionComponent():ReactNode {
                             <label className={'label'} htmlFor="sertraline-today-checkbox">Sertraline (the after lunch medication)</label>
                         </div>
                         <div className={'flex items-center gap-[10px] mb-[30px]'}>
-                            <input className={'checkbox'} type="checkbox" id={'raspridone-today-checkbox'}/>
-                            <label className={'label'} htmlFor="raspridone-today-checkbox">Rasperidone (the after dinner medication)</label>
+                            <input className={'checkbox'} type="checkbox" id={'rispridone-today-checkbox'}/>
+                            <label className={'label'} htmlFor="rispridone-today-checkbox">Risperidone (the after dinner medication)</label>
                         </div>
                         <p className={'inner-paragraph'}>
                             Taking medications regularly is important for your health and well-being. Here are five lines that explain why:
