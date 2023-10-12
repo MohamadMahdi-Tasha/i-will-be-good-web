@@ -4,6 +4,7 @@ import {ReactNode} from "react";
 import HolderComponent from "@/chunk/holderComponent";
 import FirstSectionComponent from "@/component/section/home/firstSectionComponent";
 import SecondSectionComponent from "@/component/section/home/secondSectionComponent";
+import ThirdSectionComponent from "@/component/section/home/thirdSectionComponent";
 
 // Creating And Exporting Home Page As Default
 export default function HomePage():ReactNode {
@@ -14,6 +15,7 @@ export default function HomePage():ReactNode {
             <hr className={'section-divider'} />
             <SecondSectionComponent />
             <hr className={'section-divider'} />
+            <ThirdSectionComponent />
         </HolderComponent>
     );
 }
