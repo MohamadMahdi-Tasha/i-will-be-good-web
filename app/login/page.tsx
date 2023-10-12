@@ -19,8 +19,8 @@ export default function LoginPage():ReactNode {
     // Defining States Of Component
     const [emailValue, setEmailValue]:[string, Dispatch<string>] = useState('');
     const [passwordValue, setPasswordValue]:[string, Dispatch<string>] = useState('');
-    const [isErrored, setErrored] = useState(false);
-    const [isFetching, setFetching] = useState(false);
+    const [isErrored, setErrored]:[boolean, Dispatch<boolean>] = useState(false);
+    const [isFetching, setFetching]:[boolean, Dispatch<boolean>] = useState(false);
 
     // Defining Use Router Hook
     const router = useRouter();
