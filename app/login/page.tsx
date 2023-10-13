@@ -9,13 +9,11 @@ import useFirebase from "@/hook/useFirebase";
 import { getAuth, GoogleAuthProvider, signInWithRedirect  } from "firebase/auth";
 import {useRouter} from "next/navigation";
 import {AppRouterInstance} from "next/dist/shared/lib/app-router-context.shared-runtime";
-import {FirebaseApp} from "firebase/app";
-import {Database, DatabaseReference} from "@firebase/database";
 
 // Creating And Exporting Login Page As Default
 export default function LoginPage():ReactNode {
     // Defining Firebase
-    const [app, Database, databaseRef]:[FirebaseApp, Database, DatabaseReference] = useFirebase('/');
+    const [app, Database, databaseRef] = useFirebase('/');
 
     // Defining useRouter Hook To UseLater
     const router:AppRouterInstance  = useRouter();
@@ -23,7 +21,6 @@ export default function LoginPage():ReactNode {
     // Using useEffect Hook To Log User
     useEffect(() => {
         const auth = getAuth();
-
         auth.onAuthStateChanged((user) => {
             if (user) {
                 router.push('/');
@@ -36,8 +33,8 @@ export default function LoginPage():ReactNode {
 
     // Returning JSX
     return (
-        <HolderComponent className={'min-h-[100vh]'}>
-            <h1 className={'title text-center'}>Please Wait ....</h1>
-        </HolderComponent>
+        <div className={'fixed bg-white top-0 left-0 w-full h-full z-[100] p-[20px] flex justify-center items-center'}>
+            <h1 className={'title text-black'}>Please Wait ....</h1>
+        </div>
     );
 }
