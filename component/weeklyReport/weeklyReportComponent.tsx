@@ -16,7 +16,7 @@ export default function WeeklyReportComponent({weekArray}:propsType):ReactNode {
             <div className={'lg:grid flex justify-between items-center lg:grid-cols-7 gap-[30px] max-w-[700px] mx-auto lg:[&>div:last-of-type]:pr-0 [&>div:last-of-type]:pr-[20px]'}>
                 {
                     weekArray.map((item:boolean, index:number) => (
-                        <WeeklyReportItemComponent index={index} isChecked={item} />
+                        <WeeklyReportItemComponent key={index} index={index} isChecked={item} />
                     ))
                 }
             </div>
