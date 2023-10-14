@@ -1,26 +1,91 @@
 // Codes By Mahdi Tasha
 // Importing Part
-import {ReactNode} from "react";
+import {Dispatch, ReactNode, useEffect, useState} from "react";
+import useFirebase from "@/hook/useFirebase";
+import {Database, DatabaseReference, onValue, set} from 'firebase/database';
+import {getAuth, Auth} from "firebase/auth";
 import WeeklyReportOfTreatmentComponent from "@/component/weeklyReport/weeklyReportOfTreatmentComponent";
+import {FirebaseApp} from "firebase/app";
 
 // Creating And Exporting First Section Of Home Page As Default
 export default function FirstSectionComponent():ReactNode {
+    // Defining States Of Component
+    const [isSertralineChecked, setSertralineChcked]:[boolean, Dispatch<boolean>] = useState(true);
+    const [isRispridoneChecked, setRispridoneChcked]:[boolean, Dispatch<boolean>] = useState(false);
+    const [isSertralineFetching, setSertralineFetching]:[boolean, Dispatch<boolean>] = useState(true);
+    const [isRispridoneFetching, setRispridoneFetching]:[boolean, Dispatch<boolean>] = useState(true);
+
+    // Defining Firebase
+    const auth:Auth = getAuth();
+    const [app, database, databaseRef]:[FirebaseApp, Database, DatabaseReference] = useFirebase(`${auth.currentUser?.uid}/${btoa(new Date().toLocaleDateString())}/medication`);
+
+    // Fetching Data In Database
+    useEffect(() => {
+        onValue(databaseRef, (snapshot) => {
+            const data = snapshot.val();
+            console.log(data);
+            
+
+            if (data) {
+                setSertralineChcked(data.sertraline);
+                setRispridoneChcked(data.risperidone);
+            } else {
+                setSertralineChcked(false);
+                setRispridoneChcked(false);
+            }
+
+            setSertralineFetching(false);
+            setRispridoneFetching(false);
+        })
+    }, [])
+
     // Returning JSX
     return (
         <section>
             <main>
-                <h2 className={'title'}>Medications:</h2>
+                <h2 
+                    onClick={() => {
+                        set(databaseRef, {
+                            sertraline: isSertralineChecked,
+                            risperidone: isRispridoneChecked
+                        })
+                    }}
+                 className={'title'}>Medications:</h2>
                 <div className={'grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 lg:grid-rows-2 sm:gap-[20px] gap-[10px] mb-[30px]'}>
                     <div className={'bg-black py-[30px] sm:col-span-2 sm:row-span-2 px-[20px] rounded-[20px]'}>
                         <h5 className={'inner-title mb-[20px]'}>Today’s medication todo :</h5>
-                        <div className={'flex items-center gap-[10px] mb-[15px]'}>
-                            <input className={'checkbox'} type="checkbox" id={'sertraline-today-checkbox'}/>
-                            <label className={'label'} htmlFor="sertraline-today-checkbox">Sertraline (the after lunch medication)</label>
-                        </div>
-                        <div className={'flex items-center gap-[10px] mb-[30px]'}>
-                            <input className={'checkbox'} type="checkbox" id={'rispridone-today-checkbox'}/>
-                            <label className={'label'} htmlFor="rispridone-today-checkbox">Risperidone (the after dinner medication)</label>
-                        </div>
+                        {
+                            (isSertralineFetching)
+                                ? <div className="w-full h-[40px] loading mb-[15px]" />
+                                : (
+                                    <div className={'flex items-center gap-[10px] mb-[15px]'}>
+                                        <input onChange={(event) => {
+                                            setSertralineChcked(event.target.checked);
+                                            set(databaseRef, {
+                                                sertraline: event.target.checked,
+                                                risperidone: isRispridoneChecked
+                                            })
+                                        }} checked={isSertralineChecked} className={'checkbox'} type="checkbox" id={'sertraline-today-checkbox'}/>
+                                        <label className={'label'} htmlFor="sertraline-today-checkbox">Sertraline (the after lunch medication)</label>
+                                    </div>
+                                )
+                        }
+                        {
+                            (isRispridoneFetching)
+                                ? <div className="w-full h-[40px] loading mb-[30px]" />
+                                : (
+                                    <div className={'flex items-center gap-[10px] mb-[30px]'}>
+                                        <input onChange={(event) => {
+                                            setRispridoneChcked(event.target.checked);
+                                            set(databaseRef, {
+                                                sertraline: isSertralineChecked,
+                                                risperidone: event.target.checked
+                                            })
+                                        }}  checked={isRispridoneChecked} className={'checkbox'} type="checkbox" id={'rispridone-today-checkbox'}/>
+                                        <label className={'label'} htmlFor="rispridone-today-checkbox">Risperidone (the after dinner medication)</label>
+                                    </div>
+                                )
+                        }
                         <p className={'inner-paragraph'}>
                             Taking medications regularly is important for your health and well-being. Here are five lines that explain why:
                             Medications can help you manage chronic conditions.
