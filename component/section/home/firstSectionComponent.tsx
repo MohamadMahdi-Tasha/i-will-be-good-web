@@ -23,8 +23,6 @@ export default function FirstSectionComponent():ReactNode {
     useEffect(() => {
         onValue(databaseRef, (snapshot) => {
             const data = snapshot.val();
-            console.log(data);
-            
 
             if (data) {
                 setSertralineChcked(data.sertraline);
@@ -43,14 +41,7 @@ export default function FirstSectionComponent():ReactNode {
     return (
         <section>
             <main>
-                <h2 
-                    onClick={() => {
-                        set(databaseRef, {
-                            sertraline: isSertralineChecked,
-                            risperidone: isRispridoneChecked
-                        })
-                    }}
-                 className={'title'}>Medications:</h2>
+                <h2 className={'title'}>Medications:</h2>
                 <div className={'grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 lg:grid-rows-2 sm:gap-[20px] gap-[10px] mb-[30px]'}>
                     <div className={'bg-black py-[30px] sm:col-span-2 sm:row-span-2 px-[20px] rounded-[20px]'}>
                         <h5 className={'inner-title mb-[20px]'}>Today’s medication todo :</h5>
