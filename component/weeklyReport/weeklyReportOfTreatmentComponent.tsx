@@ -1,4 +1,7 @@
 // Codes By Mahdi Tasha
+// Forcing Next Js To Render This Component As Client Side Component
+'use client';
+
 // Importing Part
 import {ReactNode, useEffect, useState} from 'react';
 import WeeklyReportComponent from "@/component/weeklyReport/weeklyReportComponent";
@@ -19,7 +22,6 @@ interface propsType {
 export default function WeeklyReportOfTreatmentComponent({treatment, link, className}:propsType):ReactNode {
     // Defining States Of Component
     const [weekArray, setWeekArray]:any = useState([false, false, false, false, false, false, false]);
-
 
     // Defining Firebase
     const auth:Auth = getAuth()

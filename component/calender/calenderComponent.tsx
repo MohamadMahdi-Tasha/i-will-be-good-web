@@ -4,18 +4,23 @@
 
 // Importing Part
 import {Dispatch, ReactNode, useState, useEffect} from "react";
+import useFirebase from "@/hook/useFirebase";
+import {Auth, getAuth} from "firebase/auth";
+import {FirebaseApp} from "firebase/app";
+import {Database, DatabaseReference, onValue} from "firebase/database";
 
 // Defining Type Of Props
 interface propsType {
-    doneDaysArray: Array<Number>;
+    treatment: 'rispridone' | 'sertraline' | 'meditation';
 }
 
 // Creating And Exporting Calendar Component As Default
-export default function CalenderComponent({doneDaysArray}:propsType):ReactNode {
+export default function CalenderComponent({treatment}:propsType):ReactNode {
     // Defining States Of Component
     const [monthLenght, setMonthLenght]:[number, Dispatch<number>] = useState(0);
     const [monthFirstDay, setMonthFirstDay]:[string, Dispatch<string>] = useState('');
     const [countOfBeforeToday, setCountOfBeforeToday]:[number, Dispatch<number>] = useState(0);
+    const [doneDaysArray, setDoneDays] = useState([]);
 
     // Using useEffect Hook To Set Length And First Day Of This Month
     useEffect(() => {
@@ -38,6 +43,41 @@ export default function CalenderComponent({doneDaysArray}:propsType):ReactNode {
             case 'mon': setCountOfBeforeToday(1);break;
             default : setCountOfBeforeToday(0);break;
         }
+    }, [])
+
+    // Defining Firebase
+    const auth:Auth = getAuth();
+    const [app, database, databaseRef]:[FirebaseApp, Database, DatabaseReference] = useFirebase(`${auth.currentUser?.uid}`);
+
+    // Using useEffect Hook To Get Data From Database
+    useEffect(() => {
+        onValue(databaseRef, (snapshot) => {
+            const data = snapshot.val();
+            let dataArray:number[] = [1,2];
+
+            if (data) {
+                for (const [key,value] of Object.entries(data)) {
+                    if (treatment === 'rispridone') {
+                        if (value.medication.risperidone === true) {
+                            const dateOfKey = new Date(atob(key));
+                            dataArray.push(dateOfKey.getDate());
+                        }
+                    } else if (treatment === 'sertraline') {
+                        if (value.medication.sertraline === true) {
+                            const dateOfKey = new Date(atob(key));
+                            dataArray.push(dateOfKey.getDate());
+                        }
+                    } else {
+                        if (value.meditation === true) {
+                            const dateOfKey = new Date(atob(key));
+                            dataArray.push(dateOfKey.getDate());
+                        }
+                    }
+                }
+            }
+
+            setDoneDays(dataArray);
+        })
     }, [])
 
     // Returning JSX
