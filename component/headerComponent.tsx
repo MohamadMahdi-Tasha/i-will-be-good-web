@@ -38,7 +38,7 @@ export default function HeaderComponent():ReactNode {
 
     // Returning JSX
     return (
-        <header className={'bg-black/20 backdrop-blur fixed top-0 left-0 w-full'}>
+        <header className={'bg-black/20 backdrop-blur fixed top-0 left-0 w-full z-[50]'}>
             <HolderComponent className={'flex justify-between items-center gap-[20px]'}>
                 <Link href={'/'} className={'font-normal tracking-[7px] lg:text-[26px] text-[20px] truncate'}>I WILL BE GOOD</Link>
                 {

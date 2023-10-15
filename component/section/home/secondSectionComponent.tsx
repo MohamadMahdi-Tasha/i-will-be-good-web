@@ -49,7 +49,7 @@ export default function SecondSectionComponent():ReactNode {
                         )
                 }
                 <p className={'paragraph mb-[50px]'}>Meditation is a practice in which an individual uses a technique – such as mindfulness, or focuses the mind on a particular object, thought, or activity – to train attention and awareness, and achieve a mentally clear and emotionally calm and stable state.</p>
-                <WeeklyReportOfTreatmentComponent weekArray={[true,true,true,true,false,false,false]} treatment={'meditation'} link={'/meditation'} />
+                <WeeklyReportOfTreatmentComponent treatment={'meditation'} link={'/meditation'} />
             </main>
         </section>
     );

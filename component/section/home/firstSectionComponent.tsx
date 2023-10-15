@@ -103,8 +103,8 @@ export default function FirstSectionComponent():ReactNode {
                     <br/>
                     However, risperidone has not been shown to improve the core symptoms of depersonalization and derealization, and may have significant side effects, such as weight gain, diabetes, movement disorders, and increased prolactin levels2
                 </p>
-                <WeeklyReportOfTreatmentComponent weekArray={[true,true,true,true,false,false,false]} treatment={'sertraline'} link={'/medication/sertraline'} className={'mb-[50px]'} />
-                <WeeklyReportOfTreatmentComponent weekArray={[true,true,true,true,false,false,false]} treatment={'risperidone'} link={'/medication/risperidone'} />
+                <WeeklyReportOfTreatmentComponent treatment={'sertraline'} link={'/medication/sertraline'} className={'mb-[50px]'} />
+                <WeeklyReportOfTreatmentComponent treatment={'risperidone'} link={'/medication/risperidone'} />
             </main>
         </section>
     );
