@@ -20,7 +20,7 @@ export default function CalenderComponent({treatment}:propsType):ReactNode {
     const [monthLenght, setMonthLenght]:[number, Dispatch<number>] = useState(0);
     const [monthFirstDay, setMonthFirstDay]:[string, Dispatch<string>] = useState('');
     const [countOfBeforeToday, setCountOfBeforeToday]:[number, Dispatch<number>] = useState(0);
-    const [doneDaysArray, setDoneDays] = useState([]);
+    const [doneDaysArray, setDoneDays]:[Array<number>, Dispatch<Array<number>>] = useState([1,2]);
 
     // Using useEffect Hook To Set Length And First Day Of This Month
     useEffect(() => {
@@ -53,7 +53,7 @@ export default function CalenderComponent({treatment}:propsType):ReactNode {
     useEffect(() => {
         onValue(databaseRef, (snapshot) => {
             const data = snapshot.val();
-            let dataArray:number[] = [1,2];
+            let dataArray:number[] = [];
 
             if (data) {
                 for (const [key,value] of Object.entries(data)) {
