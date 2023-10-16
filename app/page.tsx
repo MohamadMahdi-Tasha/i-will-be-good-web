@@ -8,9 +8,11 @@ import HolderComponent from "@/chunk/holderComponent";
 import FirstSectionComponent from "@/component/section/home/firstSectionComponent";
 import SecondSectionComponent from "@/component/section/home/secondSectionComponent";
 import ThirdSectionComponent from "@/component/section/home/thirdSectionComponent";
-import {getAuth} from "firebase/auth";
+import {Auth, getAuth} from "firebase/auth";
 import useFirebase from "@/hook/useFirebase";
 import Link from "next/link";
+import {FirebaseApp} from "firebase/app";
+import {DatabaseReference, Database} from "firebase/database";
 
 // Creating And Exporting Home Page As Default
 export default function HomePage():ReactNode {
@@ -19,11 +21,11 @@ export default function HomePage():ReactNode {
     const [isUserFetching, setUserFetching]:[boolean, Dispatch<boolean>] = useState(true);
 
     // Defining Firebase
-    const [app, Database, databaseRef] = useFirebase('/');
+    const [app, Database, databaseRef]:[FirebaseApp, Database, DatabaseReference] = useFirebase('/');
 
     // Using useEffect Hook To Log User
     useEffect(() => {
-        const auth = getAuth();
+        const auth:Auth = getAuth();
 
         auth.onAuthStateChanged((user:any) => {
             if (user) {

@@ -4,23 +4,24 @@
 
 // Importing Part
 import {useEffect, ReactNode} from "react";
-import HolderComponent from "@/chunk/holderComponent";
 import useFirebase from "@/hook/useFirebase";
-import { getAuth, GoogleAuthProvider, signInWithRedirect  } from "firebase/auth";
+import {getAuth, GoogleAuthProvider, signInWithRedirect, Auth} from "firebase/auth";
 import {useRouter} from "next/navigation";
 import {AppRouterInstance} from "next/dist/shared/lib/app-router-context.shared-runtime";
+import {FirebaseApp} from "firebase/app";
+import {DatabaseReference, Database} from "firebase/database";
 
 // Creating And Exporting Login Page As Default
 export default function LoginPage():ReactNode {
     // Defining Firebase
-    const [app, Database, databaseRef] = useFirebase('/');
+    const [app, Database, databaseRef]:[FirebaseApp, Database, DatabaseReference] = useFirebase('/');
 
     // Defining useRouter Hook To UseLater
     const router:AppRouterInstance  = useRouter();
 
     // Using useEffect Hook To Log User
     useEffect(() => {
-        const auth = getAuth();
+        const auth:Auth = getAuth();
         auth.onAuthStateChanged((user) => {
             if (user) {
                 router.push('/');

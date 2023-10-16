@@ -8,7 +8,7 @@ import Link from 'next/link';
 export default function FooterComponent():ReactNode {
     // Returning JSX
     return (
-        <footer className={'bg-black/20 backdrop-blur'}>
+        <footer className={'bg-black/20 border-t border-t-black'}>
             <HolderComponent className={'flex flex-wrap items-center justify-between gap-[10px]'}>
                 <Link href={'/'} className={'font-normal tracking-[7px] lg:text-[22px] text-[20px]'}>I WILL BE GOOD</Link>
                 <h3 className={'font-normal lg:text-[22px] text-[20px]'}>Made By <a href={"https://mahditasha.vercel.app/"} className={'link'}>Mahdi Tasha</a></h3>

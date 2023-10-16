@@ -8,7 +8,7 @@ import WeeklyReportComponent from "@/component/weeklyReport/weeklyReportComponen
 import Link from "next/link";
 import useFirebase from '@/hook/useFirebase';
 import {FirebaseApp} from 'firebase/app';
-import {Database, DatabaseReference, onValue} from 'firebase/database';
+import {Database, DatabaseReference, onValue, set} from 'firebase/database';
 import {getAuth, Auth} from 'firebase/auth';
 
 // Defining Type OF Props
@@ -41,7 +41,7 @@ export default function WeeklyReportOfTreatmentComponent({treatment, link, class
             const today:Date = new Date();
             let arrayToSet:Array<boolean> = [];
             const arrayOfThisWeek:Array<string> = [
-                btoa(new Date(today.setDate(today.getDate() - today.getDay())).toLocaleDateString()),
+                addOneDayToDate(new Date(today.setDate(today.getDate() - today.getDay())), 0),
                 addOneDayToDate(new Date(today.setDate(today.getDate() - today.getDay())), 1),
                 addOneDayToDate(new Date(today.setDate(today.getDate() - today.getDay())), 2),
                 addOneDayToDate(new Date(today.setDate(today.getDate() - today.getDay())), 3),
@@ -49,32 +49,32 @@ export default function WeeklyReportOfTreatmentComponent({treatment, link, class
                 addOneDayToDate(new Date(today.setDate(today.getDate() - today.getDay())), 5),
                 addOneDayToDate(new Date(today.setDate(today.getDate() - today.getDay())), 6)
             ];
-            
-            arrayOfThisWeek.forEach(item => {
-                const findedItem = data[item];
+
+            arrayOfThisWeek.forEach((item:string) => {
+                const findedItem:{
+                    meditation: boolean,
+                    medication: {
+                        sertraline: boolean,
+                        risperidone: boolean
+                    }
+                } = data[item];
 
                 if (findedItem) {
                     if (treatment === 'sertraline') {
-                        arrayToSet.push((findedItem.medication.sertraline === true) ? true : false);
-                        if (arrayToSet.length < 7) {
-                            const remainedCount = 7 - arrayToSet.length;
-                            [...Array(remainedCount)].forEach(item => arrayToSet.push(false))
-                        }
+                        arrayToSet.push((findedItem.medication.sertraline));
                     } else if (treatment === 'risperidone') {
-                        arrayToSet.push((findedItem.medication.risperidone === true) ? true : false);
-                        if (arrayToSet.length < 7) {
-                            const remainedCount = 7 - arrayToSet.length;
-                            [...Array(remainedCount)].forEach(item => arrayToSet.push(false))
-                        }
+                        arrayToSet.push((findedItem.medication.risperidone));
                     } else if (treatment === 'meditation') {
-                        arrayToSet.push((findedItem.meditation === true) ? true : false);
-                        if (arrayToSet.length < 7) {
-                            const remainedCount = 7 - arrayToSet.length;
-                            [...Array(remainedCount)].forEach(item => arrayToSet.push(false))
-                        }
+                        arrayToSet.push((findedItem.meditation));
                     }
                 }
             })
+
+            if (arrayToSet.length > 7) {
+                arrayToSet.slice(0,6);
+            } else {
+                [...Array(7 - arrayToSet.length)].forEach(() => arrayToSet.push(false));
+            }
 
             setWeekArray(arrayToSet);
         });
@@ -83,7 +83,23 @@ export default function WeeklyReportOfTreatmentComponent({treatment, link, class
     // Returning JSX
     return (
         <div className={(className !== null) ? className : ''}>
-            <h5 className={'subtitle'}>Monthly treatment report of {treatment}:</h5>
+            <h5 onClick={() => {
+                set(databaseRef, {
+                    'MTAvMTUvMjAyMw==': {
+                        medication: {
+                            sertraline: true,
+                            risperidone: true
+                        },
+                        meditation: false
+                    }, 'MTAvMTYvMjAyMw==': {
+                        medication: {
+                            sertraline: true,
+                            risperidone: false
+                        },
+                        meditation: true
+                    }
+                })
+            }} className={'subtitle'}>Monthly treatment report of {treatment}:</h5>
             <WeeklyReportComponent weekArray={weekArray} />
             <Link className={'rounded-[10px] p-[10px] border border-black w-full text-center truncate text-[18px] text-red-black font-normal block mt-[15px]'} href={link}>
                 See monthly report of {treatment}.

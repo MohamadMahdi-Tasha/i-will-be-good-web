@@ -22,6 +22,10 @@ export default function CalenderComponent({treatment}:propsType):ReactNode {
     const [countOfBeforeToday, setCountOfBeforeToday]:[number, Dispatch<number>] = useState(0);
     const [doneDaysArray, setDoneDays]:[Array<number>, Dispatch<Array<number>>] = useState([1,2]);
 
+    // Defining Firebase
+    const auth:Auth = getAuth();
+    const [app, database, databaseRef]:[FirebaseApp, Database, DatabaseReference] = useFirebase(`${auth.currentUser?.uid}`);
+
     // Using useEffect Hook To Set Length And First Day Of This Month
     useEffect(() => {
         const today:Date = new Date();
@@ -45,10 +49,6 @@ export default function CalenderComponent({treatment}:propsType):ReactNode {
         }
     }, [])
 
-    // Defining Firebase
-    const auth:Auth = getAuth();
-    const [app, database, databaseRef]:[FirebaseApp, Database, DatabaseReference] = useFirebase(`${auth.currentUser?.uid}`);
-
     // Using useEffect Hook To Get Data From Database
     useEffect(() => {
         onValue(databaseRef, (snapshot) => {
@@ -56,7 +56,10 @@ export default function CalenderComponent({treatment}:propsType):ReactNode {
             let dataArray:number[] = [];
 
             if (data) {
-                for (const [key,value] of Object.entries(data)) {
+                for (const [key,value] of Object.entries(data) as [string, {
+                    meditation: boolean,
+                    medication: { sertraline: boolean, risperidone: boolean }
+                }][]) {
                     if (treatment === 'rispridone') {
                         if (value.medication.risperidone === true) {
                             const dateOfKey = new Date(atob(key));

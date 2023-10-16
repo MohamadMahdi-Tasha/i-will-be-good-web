@@ -8,8 +8,10 @@ import CalenderComponent from "@/component/calender/calenderComponent";
 import ThirdSectionComponent from "@/component/section/home/thirdSectionComponent";
 import HolderComponent from "@/chunk/holderComponent";
 import useFirebase from "@/hook/useFirebase";
-import {getAuth} from "firebase/auth";
+import {Auth, getAuth} from "firebase/auth";
 import Link from "next/link";
+import {FirebaseApp} from "firebase/app";
+import {DatabaseReference, Database} from "firebase/database";
 
 // Creating And Exporting Meditation Page As Default
 export default function MeditationPage():ReactNode {
@@ -18,11 +20,11 @@ export default function MeditationPage():ReactNode {
      const [isUserFetching, setUserFetching]:[boolean, Dispatch<boolean>] = useState(true);
     
      // Defining Firebase
-     const [app, Database, databaseRef] = useFirebase('/');
-    
-     // Using useEffect Hook To Log User
+    const [app, Database, databaseRef]:[FirebaseApp, Database, DatabaseReference] = useFirebase('/');
+
+    // Using useEffect Hook To Log User
      useEffect(() => {
-         const auth = getAuth();
+         const auth:Auth = getAuth();
     
          auth.onAuthStateChanged((user:any) => {
              if (user) {

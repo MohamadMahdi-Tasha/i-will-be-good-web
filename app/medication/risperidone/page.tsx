@@ -8,8 +8,10 @@ import HolderComponent from "@/chunk/holderComponent";
 import ThirdSectionComponent from "@/component/section/home/thirdSectionComponent";
 import CalenderComponent from "@/component/calender/calenderComponent";
 import useFirebase from "@/hook/useFirebase";
-import {getAuth} from "firebase/auth";
+import {getAuth, Auth} from "firebase/auth";
 import Link from "next/link";
+import {FirebaseApp} from "firebase/app";
+import {DatabaseReference, Database} from "firebase/database";
 
 // Creating And Exporting Rispridone Page As Default
 export default function RispridonePage():ReactNode {
@@ -18,11 +20,11 @@ export default function RispridonePage():ReactNode {
     const [isUserFetching, setUserFetching]:[boolean, Dispatch<boolean>] = useState(true);
 
     // Defining Firebase
-    const [app, Database, databaseRef] = useFirebase('/');
+    const [app, Database, databaseRef]:[FirebaseApp, Database, DatabaseReference] = useFirebase('/');
 
     // Using useEffect Hook To Log User
     useEffect(() => {
-        const auth = getAuth();
+        const auth:Auth = getAuth();
 
         auth.onAuthStateChanged((user:any) => {
             if (user) {
