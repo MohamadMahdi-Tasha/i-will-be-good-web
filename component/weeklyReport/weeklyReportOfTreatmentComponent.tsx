@@ -8,7 +8,7 @@ import WeeklyReportComponent from "@/component/weeklyReport/weeklyReportComponen
 import Link from "next/link";
 import useFirebase from '@/hook/useFirebase';
 import {FirebaseApp} from 'firebase/app';
-import {Database, DatabaseReference, onValue, set} from 'firebase/database';
+import {Database, DatabaseReference, onValue} from 'firebase/database';
 import {getAuth, Auth} from 'firebase/auth';
 
 // Defining Type OF Props
@@ -83,23 +83,7 @@ export default function WeeklyReportOfTreatmentComponent({treatment, link, class
     // Returning JSX
     return (
         <div className={(className !== null) ? className : ''}>
-            <h5 onClick={() => {
-                set(databaseRef, {
-                    'MTAvMTUvMjAyMw==': {
-                        medication: {
-                            sertraline: true,
-                            risperidone: true
-                        },
-                        meditation: false
-                    }, 'MTAvMTYvMjAyMw==': {
-                        medication: {
-                            sertraline: true,
-                            risperidone: false
-                        },
-                        meditation: true
-                    }
-                })
-            }} className={'subtitle'}>Monthly treatment report of {treatment}:</h5>
+            <h5 className={'subtitle'}>Monthly treatment report of {treatment}:</h5>
             <WeeklyReportComponent weekArray={weekArray} />
             <Link className={'rounded-[10px] p-[10px] border border-black w-full text-center truncate text-[18px] text-red-black font-normal block mt-[15px]'} href={link}>
                 See monthly report of {treatment}.
