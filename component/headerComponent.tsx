@@ -18,11 +18,10 @@ export default function HeaderComponent():ReactNode {
 
     // Defining Firebase
     const [app, Database, databaseRef] = useFirebase('/');
+    const auth = getAuth();
 
     // Using useEffect Hook To Log User
     useEffect(() => {
-        const auth = getAuth();
-
         auth.onAuthStateChanged((user:any) => {
             if (user) {
                 setUserLoggedIn(true);
@@ -45,7 +44,7 @@ export default function HeaderComponent():ReactNode {
                     (isUserFetching)
                         ? <div className={'w-[50px] h-[50px] aspect-square loading rounded-full'} />
                         : (isUserLoggedIn)
-                            ? <img src={userImageUrl} className={'w-[50px] h-[50px] aspect-square object-cover rounded-full'} alt="Profile Image Of You"/>
+                            ? <img onClick={() => auth.signOut()} src={userImageUrl} className={'w-[50px] cursor-pointer h-[50px] aspect-square object-cover rounded-full'} alt="Profile Image Of You"/>
                             : <Link href={'/login'} className={'px-[30px] py-[10px] bg-transparent border border-black text-[15px] font-normal text-black rounded-[10px]'}>Log In</Link>
                 }
             </HolderComponent>
