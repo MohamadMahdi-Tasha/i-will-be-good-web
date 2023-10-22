@@ -45,7 +45,7 @@ export default function HeaderComponent():ReactNode {
                         ? <div className={'w-[50px] h-[50px] aspect-square loading rounded-full'} />
                         : (isUserLoggedIn)
                             ? <img onClick={() => auth.signOut()} src={userImageUrl} className={'w-[50px] cursor-pointer h-[50px] aspect-square object-cover rounded-full'} alt="Profile Image Of You"/>
-                            : <Link href={'/login'} className={'px-[30px] py-[10px] bg-transparent border border-black text-[15px] font-normal text-black rounded-[10px]'}>Log In</Link>
+                            : <Link href={'/login'} className={'px-[30px] py-[10px] bg-transparent border border-black text-[15px] font-normal text-black rounded-[10px] whitespace-nowrap'}>Log In</Link>
                 }
             </HolderComponent>
         </header>
