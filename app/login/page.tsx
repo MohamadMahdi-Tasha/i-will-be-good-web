@@ -27,7 +27,7 @@ export default function LoginPage():ReactNode {
                 router.push('/');
             } else {
                 const provider:GoogleAuthProvider = new GoogleAuthProvider();
-                signInWithRedirect(auth, provider)
+                signInWithRedirect(auth, provider).catch((data) => alert(data))
             }
         });
     }, [])
