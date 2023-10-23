@@ -43,8 +43,8 @@ export default function SecondSectionComponent():ReactNode {
                                 <input onChange={(event) => {
                                             setMeditationChecked(event.target.checked);
                                             set(databaseRef, event.target.checked)
-                                        }} checked={isMeditationChecked} className={'checkbox dark'} type="checkbox" id={'sertraline-today-checkbox'}/>
-                                <label className={'label dark'} htmlFor="sertraline-today-checkbox">Meditation</label>
+                                        }} checked={isMeditationChecked} className={'checkbox dark'} type="checkbox" id={'meditation-today-checkbox'}/>
+                                <label className={'label dark'} htmlFor="meditation-today-checkbox">Meditation</label>
                             </div>
                         )
                 }

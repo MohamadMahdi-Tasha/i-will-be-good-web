@@ -8,12 +8,12 @@ import HolderComponent from "@/chunk/holderComponent";
 import Link from "next/link";
 import useFirebase from "@/hook/useFirebase";
 import {getAuth} from "firebase/auth";
+import ProfileImage from '@/public/assets/img/img-profile.jpg';
 
 // Creating And Exporting Header Component As Default
 export default function HeaderComponent():ReactNode {
     // Defining States Of Component
     const [isUserLoggedIn, setUserLoggedIn]:[boolean, Dispatch<boolean>] = useState(false);
-    const [userImageUrl, setUserImageUrl]:[string, Dispatch<string>] = useState('');
     const [isUserFetching, setUserFetching]:[boolean, Dispatch<boolean>] = useState(true);
 
     // Defining Firebase
@@ -25,11 +25,9 @@ export default function HeaderComponent():ReactNode {
         auth.onAuthStateChanged((user:any) => {
             if (user) {
                 setUserLoggedIn(true);
-                setUserImageUrl(user.photoURL);
                 setUserFetching(false);
             } else {
                 setUserLoggedIn(false);
-                setUserImageUrl('');
                 setUserFetching(false);
             }
         });
@@ -44,7 +42,7 @@ export default function HeaderComponent():ReactNode {
                     (isUserFetching)
                         ? <div className={'w-[50px] h-[50px] aspect-square loading rounded-full'} />
                         : (isUserLoggedIn)
-                            ? <img onClick={() => auth.signOut()} src={userImageUrl} className={'w-[50px] cursor-pointer h-[50px] aspect-square object-cover rounded-full'} alt="Profile Image Of You"/>
+                            ? <img onClick={() => auth.signOut()} src={ProfileImage.src} className={'w-[50px] cursor-pointer h-[50px] aspect-square object-cover rounded-full'} alt="Profile Image Of You"/>
                             : <Link href={'/login'} className={'px-[30px] py-[10px] bg-transparent border border-black text-[15px] font-normal text-black rounded-[10px] whitespace-nowrap'}>Log In</Link>
                 }
             </HolderComponent>

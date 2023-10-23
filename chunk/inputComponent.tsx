@@ -34,7 +34,7 @@ export default function InputComponent({required, id, placeHolder, type, isError
                     <input onFocus={() => setInputFocused(true)}
                            ref={refProp}
                            onBlur={(event) => {
-                               (event.target.value === "" || event.target.value.startsWith(""))
+                               (event.target.value === "" || event.target.value.startsWith(" "))
                                    ? setInputFocused(false)
                                    : setInputFocused(true)
                            }}
@@ -68,7 +68,7 @@ export default function InputComponent({required, id, placeHolder, type, isError
                         <input onFocus={() => setInputFocused(true)}
                                ref={refProp}
                                onBlur={(event) => {
-                                   (event.target.value === "" || event.target.value.startsWith(""))
+                                   (event.target.value === "" || event.target.value.startsWith(" "))
                                        ? setInputFocused(false)
                                        : setInputFocused(true)
                                }}
