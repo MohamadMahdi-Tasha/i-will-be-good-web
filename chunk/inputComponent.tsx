@@ -3,7 +3,7 @@
 'use client';
 
 // Importing Part
-import {Dispatch, ReactNode, useState} from "react";
+import {Dispatch, MutableRefObject, ReactNode, useState} from "react";
 
 // Defining Type Of Props
 interface propsType {
@@ -13,10 +13,11 @@ interface propsType {
     id: string;
     isErrored: boolean;
     errorText: string;
+    refProp: MutableRefObject<any>;
 }
 
 // Creating And Exporting Input Component As Default
-export default function InputComponent({required,id,placeHolder,type,isErrored,errorText}:propsType):ReactNode {
+export default function InputComponent({required, id, placeHolder, type, isErrored, errorText, refProp}:propsType):ReactNode {
     // Defining State Of Component
     const [isInputFocused, setInputFocused]:[boolean, Dispatch<boolean>] = useState(false);
 
@@ -31,8 +32,9 @@ export default function InputComponent({required,id,placeHolder,type,isErrored,e
                         {placeHolder}
                     </label>
                     <input onFocus={() => setInputFocused(true)}
+                           ref={refProp}
                            onBlur={(event) => {
-                               (event.target.value === "")
+                               (event.target.value === "" || event.target.value.startsWith(""))
                                    ? setInputFocused(false)
                                    : setInputFocused(true)
                            }}
@@ -64,8 +66,9 @@ export default function InputComponent({required,id,placeHolder,type,isErrored,e
                     </label>
                     <div className={'flex'}>
                         <input onFocus={() => setInputFocused(true)}
+                               ref={refProp}
                                onBlur={(event) => {
-                                   (event.target.value === "")
+                                   (event.target.value === "" || event.target.value.startsWith(""))
                                        ? setInputFocused(false)
                                        : setInputFocused(true)
                                }}
