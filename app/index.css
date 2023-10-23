@@ -29,6 +29,7 @@
 .calender-month-days.today.done {@apply bg-sky-500 border-[#14FF00];}
 .loading {@apply relative z-[1] after:absolute after:w-[50px] after:top-[-50%] after:h-[200%] after:content-[""] after:bg-gradient-to-r after:from-transparent after:via-gray-500/50 after:to-transparent bg-gray-400 overflow-hidden after:rotate-[25deg];}
 .loading::after {animation: loading 1.5s linear forwards infinite 1s;}
+.submit-btn {@apply bg-sky-500 p-[15px] rounded-[10px] w-full text-center text-white text-[15px];}
 
 /*Animations*/
 @keyframes loading {
