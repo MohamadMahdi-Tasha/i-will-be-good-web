@@ -104,12 +104,11 @@ export default function LoginPage():ReactNode {
                                                 setPasswordErrorText('There was an error.');
                                             }
                                         });
-
                                 }} className={'w-full bg-black p-[30px] rounded-[20px] flex flex-col gap-[30px]'} action="#">
                                     <h1 className={'text-[30px] font-bold text-center text-white'}>Login:</h1>
                                     <InputComponent refProp={emailInputRef} isErrored={isEmailErrored} errorText={emailErrorText} type={'email'} required id={'email-input'} placeHolder={'Email:'} />
                                     <InputComponent refProp={passwordInputRef} isErrored={isPasswordErrored} errorText={passwordErrorText} type={'password'} required id={'password-input'} placeHolder={'Password:'} />
-                                    <button data-fetching={isFetching} tabIndex={(isFetching) ? -1 : 0} className={'submit-btn data-[fetching="true"]:pointer-events-none data-[fetching="true"]:opacity-50'}>
+                                    <button data-fetching={isFetching} tabIndex={(isFetching) ? -1 : 0} className={'submit-btn mb-[20px] data-[fetching="true"]:pointer-events-none data-[fetching="true"]:opacity-50'}>
                                         {
                                             (isFetching)
                                                 ? (
@@ -120,6 +119,7 @@ export default function LoginPage():ReactNode {
                                                 ) : <span>SUBMIT</span>
                                         }
                                     </button>
+                                    <Link className={'text-center text-[18px] font-normal text-white underline underline-offset-8'} href={'/signup'}>Got no Account? Sign Up</Link>
                                 </form>
                             </div>
                         )
