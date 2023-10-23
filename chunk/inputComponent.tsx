@@ -8,28 +8,44 @@ interface propsType {
     required: boolean;
     placeHolder: string;
     id: string;
+    isErrored: boolean;
+    errorText: string;
 }
 
 // Creating And Exporting Input Component As Default
-export default function InputComponent({required,id,placeHolder,type}:propsType):ReactNode {
+export default function InputComponent({required,id,placeHolder,type,isErrored,errorText}:propsType):ReactNode {
     // Conditional Rendering
     if (type !== "password") {
         return (
             <div>
-                <label htmlFor={id}>{placeHolder}</label>
-                <input type={type} id={id} name={id} required={required} />
+                <div>
+                    <label htmlFor={id}>{placeHolder}</label>
+                    <input type={type} id={id} name={id} required={required} />
+                </div>
+                {
+                    (isErrored)
+                        ? <div><p>{errorText}</p></div>
+                        : false
+                }
             </div>
         );
     } else {
         return (
             <div>
-                <label htmlFor={id}>{placeHolder}</label>
                 <div>
-                    <input type={type} id={id} name={id} required={required} />
-                    <button type={'button'}>
-                        x
-                    </button>
+                    <label htmlFor={id}>{placeHolder}</label>
+                    <div>
+                        <input type={type} id={id} name={id} required={required} />
+                        <button type={'button'}>
+                            x
+                        </button>
+                    </div>
                 </div>
+                {
+                    (isErrored)
+                        ? <div><p>{errorText}</p></div>
+                        : false
+                }
             </div>
         );
     }
